@@ -1,0 +1,63 @@
+{
+  "base": {
+    "name": "제00전투비행단 (가상)",
+    "note": "해커톤 시연용 가상 자료입니다. 실제 부대·좌표·배치와 무관하며, 일반적인 비행기지 기능구역 구성(비행지역·지원지역·근무지역·경계지역)을 참고해 구성했습니다.",
+    "grid": {
+      "cols": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
+      "rows": 7,
+      "cell_meters": 500
+    }
+  },
+  "facilities": [
+    { "id": "RWY", "name": "활주로 09/27", "type": "runway", "zone": "비행지역", "cells": ["C4", "D4", "E4", "F4", "G4", "H4"] },
+    { "id": "TWY", "name": "유도로", "type": "taxiway", "zone": "비행지역", "cells": ["D5", "E5", "F5", "G5"] },
+    { "id": "APN", "name": "계류장", "type": "apron", "zone": "비행지역", "cells": ["H5", "I5"] },
+    { "id": "HGR3", "name": "제3격납고", "type": "hangar", "zone": "비행지역", "cells": ["D2"] },
+    { "id": "HGR4", "name": "제4격납고", "type": "hangar", "zone": "비행지역", "cells": ["E2"] },
+    { "id": "HGR1", "name": "제1격납고", "type": "hangar", "zone": "비행지역", "cells": ["D3"] },
+    { "id": "HGR2", "name": "제2격납고", "type": "hangar", "zone": "비행지역", "cells": ["E3"] },
+    { "id": "TWR", "name": "관제탑", "type": "tower", "zone": "비행지역", "cells": ["F3"] },
+    { "id": "BOC", "name": "기지작전동", "type": "ops", "zone": "비행지역", "cells": ["G3"] },
+    { "id": "MNT", "name": "정비고", "type": "hangar", "zone": "비행지역", "cells": ["I3"] },
+    { "id": "FIRE", "name": "소방구조대", "type": "ops", "zone": "비행지역", "cells": ["C3"] },
+    { "id": "MET", "name": "기상관측소", "type": "radar", "zone": "비행지역", "cells": ["C2"] },
+    { "id": "NAV", "name": "항행안전시설", "type": "radar", "zone": "비행지역", "cells": ["B4"] },
+    { "id": "HELI", "name": "헬기 이착륙장", "type": "apron", "zone": "비행지역", "cells": ["I4"] },
+    { "id": "AMMO", "name": "탄약고", "type": "depot", "zone": "지원지역", "cells": ["B6"] },
+    { "id": "FUEL", "name": "유류저장시설", "type": "depot", "zone": "지원지역", "cells": ["C6"] },
+    { "id": "POW", "name": "발전소", "type": "depot", "zone": "지원지역", "cells": ["D6"] },
+    { "id": "SUP", "name": "정비창고", "type": "depot", "zone": "지원지역", "cells": ["E6"] },
+    { "id": "HQ", "name": "지휘통제동", "type": "ops", "zone": "지원지역", "cells": ["F6"] },
+    { "id": "TRN", "name": "수송부", "type": "depot", "zone": "지원지역", "cells": ["G6"] },
+    { "id": "BRK", "name": "병영", "type": "living", "zone": "근무지역", "cells": ["H7"] },
+    { "id": "MESS", "name": "급식시설", "type": "living", "zone": "근무지역", "cells": ["I7"] },
+    { "id": "MED", "name": "의무대", "type": "living", "zone": "근무지역", "cells": ["J7"] },
+    { "id": "RDR", "name": "레이더 사이트", "type": "radar", "zone": "경계지역", "cells": ["I2"] },
+    { "id": "GATE", "name": "기지 정문", "type": "gate", "zone": "경계지역", "cells": ["A4"] },
+    { "id": "GATE-R", "name": "기지 후문", "type": "gate", "zone": "경계지역", "cells": ["J5"] }
+  ],
+  "sentry_posts": [
+    { "id": "GP-01", "name": "정문초소", "cell": "A4", "sector": "서", "personnel": 3, "default_status": "정상근무" },
+    { "id": "GP-02", "name": "북서초소", "cell": "B1", "sector": "북서", "personnel": 2, "default_status": "정상근무" },
+    { "id": "GP-03", "name": "북측초소", "cell": "E1", "sector": "북", "personnel": 2, "default_status": "정상근무" },
+    { "id": "GP-04", "name": "북동초소", "cell": "H1", "sector": "북동", "personnel": 2, "default_status": "정상근무" },
+    { "id": "GP-05", "name": "동측초소", "cell": "J2", "sector": "동", "personnel": 2, "default_status": "정상근무" },
+    { "id": "GP-06", "name": "남동초소", "cell": "J6", "sector": "남동", "personnel": 2, "default_status": "정상근무" },
+    { "id": "GP-07", "name": "남측초소", "cell": "E7", "sector": "남", "personnel": 2, "default_status": "정상근무" },
+    { "id": "GP-08", "name": "남서초소", "cell": "B7", "sector": "남서", "personnel": 2, "default_status": "정상근무" }
+  ],
+  "air_defense": [
+    { "id": "AAA-01", "name": "이동형 대공포 1호", "kind": "대공포", "cell": "C2", "range_cells": 4, "mobile": true, "default_status": "대기" },
+    { "id": "AAA-02", "name": "이동형 대공포 2호", "kind": "대공포", "cell": "G2", "range_cells": 4, "mobile": true, "default_status": "대기" },
+    { "id": "AAA-03", "name": "이동형 대공포 3호", "kind": "대공포", "cell": "D7", "range_cells": 4, "mobile": true, "default_status": "대기" },
+    { "id": "AAA-04", "name": "이동형 대공포 4호", "kind": "대공포", "cell": "H6", "range_cells": 4, "mobile": true, "default_status": "대기" },
+    { "id": "MP-01", "name": "휴대용 대공유도탄 1조", "kind": "휴대용유도탄", "cell": "D1", "range_cells": 10, "mobile": true, "default_status": "대기" },
+    { "id": "MP-02", "name": "휴대용 대공유도탄 2조", "kind": "휴대용유도탄", "cell": "J3", "range_cells": 10, "mobile": true, "default_status": "대기" },
+    { "id": "MP-03", "name": "휴대용 대공유도탄 3조", "kind": "휴대용유도탄", "cell": "F7", "range_cells": 10, "mobile": true, "default_status": "대기" }
+  ],
+  "status_vocab": {
+    "sentry": ["정상근무", "경계강화", "교전", "이상없음보고"],
+    "air_defense": ["대기", "전개", "사격대기", "교전", "재배치중"],
+    "alert_level": ["평시", "관심", "주의", "경계", "심각"]
+  }
+}

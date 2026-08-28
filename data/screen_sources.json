@@ -1,0 +1,4274 @@
+{
+ "note": "해커톤 시연용 가상 화면 소스 카탈로그. 실제 부대 자료가 아닙니다.",
+ "generated_by": "tools/gen_screen_sources.py",
+ "count": 270,
+ "sources": [
+  {
+   "id": "CCTV-PERI-N01",
+   "name": "북측 외곽 울타리 1구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "B1",
+   "description": "북측 기지 외곽 울타리 1구간(B1)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "북측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-N02",
+   "name": "북측 외곽 울타리 2구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "C1",
+   "description": "북측 기지 외곽 울타리 2구간(C1)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "북측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-N03",
+   "name": "북측 외곽 울타리 3구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "D1",
+   "description": "북측 기지 외곽 울타리 3구간(D1)을 감시. 주야간 열상 겸용으로 야간 침입 탐지 가능.",
+   "tags": [
+    "경계",
+    "북측",
+    "야간",
+    "열상",
+    "외곽",
+    "울타리",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-N04",
+   "name": "북측 외곽 울타리 4구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "E1",
+   "description": "북측 기지 외곽 울타리 4구간(E1)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "북측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-N05",
+   "name": "북측 외곽 울타리 5구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "F1",
+   "description": "북측 기지 외곽 울타리 5구간(F1)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "북측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-N06",
+   "name": "북측 외곽 울타리 6구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "G1",
+   "description": "북측 기지 외곽 울타리 6구간(G1)을 감시. 주야간 열상 겸용으로 야간 침입 탐지 가능.",
+   "tags": [
+    "경계",
+    "북측",
+    "야간",
+    "열상",
+    "외곽",
+    "울타리",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-N07",
+   "name": "북측 외곽 울타리 7구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "H1",
+   "description": "북측 기지 외곽 울타리 7구간(H1)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "북측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-N08",
+   "name": "북측 외곽 울타리 8구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "I1",
+   "description": "북측 기지 외곽 울타리 8구간(I1)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "북측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-S01",
+   "name": "남측 외곽 울타리 1구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "B7",
+   "description": "남측 기지 외곽 울타리 1구간(B7)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "남측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-S02",
+   "name": "남측 외곽 울타리 2구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "C7",
+   "description": "남측 기지 외곽 울타리 2구간(C7)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "남측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-S03",
+   "name": "남측 외곽 울타리 3구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "D7",
+   "description": "남측 기지 외곽 울타리 3구간(D7)을 감시. 주야간 열상 겸용으로 야간 침입 탐지 가능.",
+   "tags": [
+    "경계",
+    "남측",
+    "야간",
+    "열상",
+    "외곽",
+    "울타리",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-S04",
+   "name": "남측 외곽 울타리 4구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "E7",
+   "description": "남측 기지 외곽 울타리 4구간(E7)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "남측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-S05",
+   "name": "남측 외곽 울타리 5구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "F7",
+   "description": "남측 기지 외곽 울타리 5구간(F7)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "남측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-S06",
+   "name": "남측 외곽 울타리 6구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "G7",
+   "description": "남측 기지 외곽 울타리 6구간(G7)을 감시. 주야간 열상 겸용으로 야간 침입 탐지 가능.",
+   "tags": [
+    "경계",
+    "남측",
+    "야간",
+    "열상",
+    "외곽",
+    "울타리",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-S07",
+   "name": "남측 외곽 울타리 7구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "H7",
+   "description": "남측 기지 외곽 울타리 7구간(H7)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "남측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-S08",
+   "name": "남측 외곽 울타리 8구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "I7",
+   "description": "남측 기지 외곽 울타리 8구간(I7)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "남측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-W01",
+   "name": "서측 외곽 울타리 1구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "A1",
+   "description": "서측 기지 외곽 울타리 1구간(A1)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "서측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-W02",
+   "name": "서측 외곽 울타리 2구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "A2",
+   "description": "서측 기지 외곽 울타리 2구간(A2)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "서측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-W03",
+   "name": "서측 외곽 울타리 3구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "A3",
+   "description": "서측 기지 외곽 울타리 3구간(A3)을 감시. 주야간 열상 겸용으로 야간 침입 탐지 가능.",
+   "tags": [
+    "경계",
+    "서측",
+    "야간",
+    "열상",
+    "외곽",
+    "울타리",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-W04",
+   "name": "서측 외곽 울타리 4구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "A4",
+   "description": "서측 기지 외곽 울타리 4구간(A4)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "서측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-W05",
+   "name": "서측 외곽 울타리 5구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "A5",
+   "description": "서측 기지 외곽 울타리 5구간(A5)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "서측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-W06",
+   "name": "서측 외곽 울타리 6구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "A6",
+   "description": "서측 기지 외곽 울타리 6구간(A6)을 감시. 주야간 열상 겸용으로 야간 침입 탐지 가능.",
+   "tags": [
+    "경계",
+    "서측",
+    "야간",
+    "열상",
+    "외곽",
+    "울타리",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-W07",
+   "name": "서측 외곽 울타리 7구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "A7",
+   "description": "서측 기지 외곽 울타리 7구간(A7)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "서측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-E01",
+   "name": "동측 외곽 울타리 1구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "J1",
+   "description": "동측 기지 외곽 울타리 1구간(J1)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "동측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-E02",
+   "name": "동측 외곽 울타리 2구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "J2",
+   "description": "동측 기지 외곽 울타리 2구간(J2)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "동측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-E03",
+   "name": "동측 외곽 울타리 3구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "J3",
+   "description": "동측 기지 외곽 울타리 3구간(J3)을 감시. 주야간 열상 겸용으로 야간 침입 탐지 가능.",
+   "tags": [
+    "경계",
+    "동측",
+    "야간",
+    "열상",
+    "외곽",
+    "울타리",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-E04",
+   "name": "동측 외곽 울타리 4구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "J4",
+   "description": "동측 기지 외곽 울타리 4구간(J4)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "동측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-E05",
+   "name": "동측 외곽 울타리 5구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "J5",
+   "description": "동측 기지 외곽 울타리 5구간(J5)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "동측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-E06",
+   "name": "동측 외곽 울타리 6구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "J6",
+   "description": "동측 기지 외곽 울타리 6구간(J6)을 감시. 주야간 열상 겸용으로 야간 침입 탐지 가능.",
+   "tags": [
+    "경계",
+    "동측",
+    "야간",
+    "열상",
+    "외곽",
+    "울타리",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-PERI-E07",
+   "name": "동측 외곽 울타리 7구간 CCTV",
+   "category": "외곽경계",
+   "feed_type": "CCTV",
+   "cell": "J7",
+   "description": "동측 기지 외곽 울타리 7구간(J7)을 감시. 주간 광학 카메라.",
+   "tags": [
+    "경계",
+    "동측",
+    "외곽",
+    "울타리",
+    "주간",
+    "침입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-RWY-01",
+   "name": "활주로 09/27 1구역 CCTV",
+   "category": "활주로",
+   "feed_type": "CCTV",
+   "cell": "C4",
+   "description": "활주로 09/27의 1번째 구역(C4)을 감시. 항공기 이착륙 및 활주로 이물질(FOD) 확인용.",
+   "tags": [
+    "FOD",
+    "비행",
+    "이착륙",
+    "항공기",
+    "활주로"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RWY-02",
+   "name": "활주로 09/27 2구역 CCTV",
+   "category": "활주로",
+   "feed_type": "CCTV",
+   "cell": "D4",
+   "description": "활주로 09/27의 2번째 구역(D4)을 감시. 항공기 이착륙 및 활주로 이물질(FOD) 확인용.",
+   "tags": [
+    "FOD",
+    "비행",
+    "이착륙",
+    "항공기",
+    "활주로"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RWY-03",
+   "name": "활주로 09/27 3구역 CCTV",
+   "category": "활주로",
+   "feed_type": "CCTV",
+   "cell": "E4",
+   "description": "활주로 09/27의 3번째 구역(E4)을 감시. 항공기 이착륙 및 활주로 이물질(FOD) 확인용.",
+   "tags": [
+    "FOD",
+    "비행",
+    "이착륙",
+    "항공기",
+    "활주로"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RWY-04",
+   "name": "활주로 09/27 4구역 CCTV",
+   "category": "활주로",
+   "feed_type": "CCTV",
+   "cell": "F4",
+   "description": "활주로 09/27의 4번째 구역(F4)을 감시. 항공기 이착륙 및 활주로 이물질(FOD) 확인용.",
+   "tags": [
+    "FOD",
+    "비행",
+    "이착륙",
+    "항공기",
+    "활주로"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RWY-05",
+   "name": "활주로 09/27 5구역 CCTV",
+   "category": "활주로",
+   "feed_type": "CCTV",
+   "cell": "G4",
+   "description": "활주로 09/27의 5번째 구역(G4)을 감시. 항공기 이착륙 및 활주로 이물질(FOD) 확인용.",
+   "tags": [
+    "FOD",
+    "비행",
+    "이착륙",
+    "항공기",
+    "활주로"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RWY-06",
+   "name": "활주로 09/27 6구역 CCTV",
+   "category": "활주로",
+   "feed_type": "CCTV",
+   "cell": "H4",
+   "description": "활주로 09/27의 6번째 구역(H4)을 감시. 항공기 이착륙 및 활주로 이물질(FOD) 확인용.",
+   "tags": [
+    "FOD",
+    "비행",
+    "이착륙",
+    "항공기",
+    "활주로"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RWY-THR-W",
+   "name": "활주로 서측 진입단 CCTV",
+   "category": "활주로",
+   "feed_type": "CCTV",
+   "cell": "C4",
+   "description": "활주로 27 방향 진입단(C4)을 감시. 서측 진입 항공기와 진입등화 상태 확인.",
+   "tags": [
+    "서측",
+    "이착륙",
+    "진입단",
+    "활주로"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RWY-THR-E",
+   "name": "활주로 동측 진입단 CCTV",
+   "category": "활주로",
+   "feed_type": "CCTV",
+   "cell": "H4",
+   "description": "활주로 09 방향 진입단(H4)을 감시. 동측 진입 항공기와 진입등화 상태 확인.",
+   "tags": [
+    "동측",
+    "이착륙",
+    "진입단",
+    "활주로"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-TWY-01",
+   "name": "유도로 A구간 CCTV",
+   "category": "유도로",
+   "feed_type": "CCTV",
+   "cell": "D5",
+   "description": "유도로 A구간(D5) 감시. 지상 활주 항공기 및 지원차량 이동 확인.",
+   "tags": [
+    "유도로",
+    "지상활주",
+    "차량",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-TWY-02",
+   "name": "유도로 B구간 CCTV",
+   "category": "유도로",
+   "feed_type": "CCTV",
+   "cell": "E5",
+   "description": "유도로 B구간(E5) 감시. 지상 활주 항공기 및 지원차량 이동 확인.",
+   "tags": [
+    "유도로",
+    "지상활주",
+    "차량",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-TWY-03",
+   "name": "유도로 C구간 CCTV",
+   "category": "유도로",
+   "feed_type": "CCTV",
+   "cell": "F5",
+   "description": "유도로 C구간(F5) 감시. 지상 활주 항공기 및 지원차량 이동 확인.",
+   "tags": [
+    "유도로",
+    "지상활주",
+    "차량",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-TWY-04",
+   "name": "유도로 D구간 CCTV",
+   "category": "유도로",
+   "feed_type": "CCTV",
+   "cell": "G5",
+   "description": "유도로 D구간(G5) 감시. 지상 활주 항공기 및 지원차량 이동 확인.",
+   "tags": [
+    "유도로",
+    "지상활주",
+    "차량",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-APN-01",
+   "name": "계류장 1구역 CCTV",
+   "category": "계류장",
+   "feed_type": "CCTV",
+   "cell": "H5",
+   "description": "계류장 1구역(H5) 감시. 주기 항공기 상태와 지원장비 접근 확인.",
+   "tags": [
+    "계류장",
+    "주기",
+    "지원장비",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-APN-02",
+   "name": "계류장 2구역 CCTV",
+   "category": "계류장",
+   "feed_type": "CCTV",
+   "cell": "I5",
+   "description": "계류장 2구역(I5) 감시. 주기 항공기 상태와 지원장비 접근 확인.",
+   "tags": [
+    "계류장",
+    "주기",
+    "지원장비",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-APN-03",
+   "name": "계류장 3구역 CCTV",
+   "category": "계류장",
+   "feed_type": "CCTV",
+   "cell": "H6",
+   "description": "계류장 3구역(H6) 감시. 주기 항공기 상태와 지원장비 접근 확인.",
+   "tags": [
+    "계류장",
+    "주기",
+    "지원장비",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-APN-04",
+   "name": "계류장 4구역 CCTV",
+   "category": "계류장",
+   "feed_type": "CCTV",
+   "cell": "I6",
+   "description": "계류장 4구역(I6) 감시. 주기 항공기 상태와 지원장비 접근 확인.",
+   "tags": [
+    "계류장",
+    "주기",
+    "지원장비",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR1-OUT",
+   "name": "제1격납고 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D3",
+   "description": "제1격납고(D3) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "격납고",
+    "외부",
+    "접근",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR1-GATE",
+   "name": "제1격납고 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "D3",
+   "description": "제1격납고(D3) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "격납고",
+    "인원",
+    "정비",
+    "출입",
+    "통제",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR1-IN",
+   "name": "제1격납고 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D3",
+   "description": "제1격납고(D3) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "격납고",
+    "내부",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-HGR2-OUT",
+   "name": "제2격납고 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "E3",
+   "description": "제2격납고(E3) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "격납고",
+    "외부",
+    "접근",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR2-GATE",
+   "name": "제2격납고 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "E3",
+   "description": "제2격납고(E3) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "격납고",
+    "인원",
+    "정비",
+    "출입",
+    "통제",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR2-IN",
+   "name": "제2격납고 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "E3",
+   "description": "제2격납고(E3) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "격납고",
+    "내부",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-HGR3-OUT",
+   "name": "제3격납고 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D2",
+   "description": "제3격납고(D2) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "격납고",
+    "외부",
+    "접근",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR3-GATE",
+   "name": "제3격납고 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "D2",
+   "description": "제3격납고(D2) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "격납고",
+    "인원",
+    "정비",
+    "출입",
+    "통제",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR3-IN",
+   "name": "제3격납고 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D2",
+   "description": "제3격납고(D2) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "격납고",
+    "내부",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-HGR4-OUT",
+   "name": "제4격납고 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "E2",
+   "description": "제4격납고(E2) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "격납고",
+    "외부",
+    "접근",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR4-GATE",
+   "name": "제4격납고 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "E2",
+   "description": "제4격납고(E2) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "격납고",
+    "인원",
+    "정비",
+    "출입",
+    "통제",
+    "항공기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HGR4-IN",
+   "name": "제4격납고 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "E2",
+   "description": "제4격납고(E2) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "격납고",
+    "내부",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-TWR-OUT",
+   "name": "관제탑 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "F3",
+   "description": "관제탑(F3) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "관제",
+    "관제탑",
+    "광역",
+    "외부",
+    "접근"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-TWR-GATE",
+   "name": "관제탑 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "F3",
+   "description": "관제탑(F3) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "관제",
+    "관제탑",
+    "광역",
+    "인원",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-TWR-IN",
+   "name": "관제탑 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "F3",
+   "description": "관제탑(F3) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "관제",
+    "관제탑",
+    "광역",
+    "내부"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-BOC-OUT",
+   "name": "기지작전동 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "G3",
+   "description": "기지작전동(G3) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "외부",
+    "작전",
+    "접근",
+    "지휘"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-BOC-GATE",
+   "name": "기지작전동 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "G3",
+   "description": "기지작전동(G3) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "인원",
+    "작전",
+    "지휘",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-BOC-IN",
+   "name": "기지작전동 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "G3",
+   "description": "기지작전동(G3) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "작전",
+    "지휘"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-MNT-OUT",
+   "name": "정비고 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "I3",
+   "description": "정비고(I3) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "외부",
+    "접근",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-MNT-GATE",
+   "name": "정비고 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "I3",
+   "description": "정비고(I3) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "인원",
+    "정비",
+    "출입",
+    "통제",
+    "항공기"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-MNT-IN",
+   "name": "정비고 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "I3",
+   "description": "정비고(I3) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "정비",
+    "항공기"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-FIRE-OUT",
+   "name": "소방구조대 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "C3",
+   "description": "소방구조대(C3) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "구조",
+    "소방",
+    "외부",
+    "접근",
+    "화재"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-FIRE-GATE",
+   "name": "소방구조대 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "C3",
+   "description": "소방구조대(C3) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "구조",
+    "소방",
+    "인원",
+    "출입",
+    "통제",
+    "화재"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-FIRE-IN",
+   "name": "소방구조대 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "C3",
+   "description": "소방구조대(C3) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "구조",
+    "내부",
+    "소방",
+    "화재"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-AMMO-OUT",
+   "name": "탄약고 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "B6",
+   "description": "탄약고(B6) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "방호",
+    "외부",
+    "접근",
+    "중요시설",
+    "탄약",
+    "폭발물"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-AMMO-GATE",
+   "name": "탄약고 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "B6",
+   "description": "탄약고(B6) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "방호",
+    "인원",
+    "중요시설",
+    "출입",
+    "탄약",
+    "통제",
+    "폭발물"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-AMMO-IN",
+   "name": "탄약고 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "B6",
+   "description": "탄약고(B6) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "방호",
+    "중요시설",
+    "탄약",
+    "폭발물"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-FUEL-OUT",
+   "name": "유류저장시설 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "C6",
+   "description": "유류저장시설(C6) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "급유",
+    "방호",
+    "외부",
+    "유류",
+    "접근",
+    "중요시설",
+    "화재"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-FUEL-GATE",
+   "name": "유류저장시설 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "C6",
+   "description": "유류저장시설(C6) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "급유",
+    "방호",
+    "유류",
+    "인원",
+    "중요시설",
+    "출입",
+    "통제",
+    "화재"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-FUEL-IN",
+   "name": "유류저장시설 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "C6",
+   "description": "유류저장시설(C6) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "급유",
+    "내부",
+    "방호",
+    "유류",
+    "중요시설",
+    "화재"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-POW-OUT",
+   "name": "발전소 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D6",
+   "description": "발전소(D6) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "발전",
+    "외부",
+    "전력",
+    "접근",
+    "중요시설"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-POW-GATE",
+   "name": "발전소 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "D6",
+   "description": "발전소(D6) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "발전",
+    "인원",
+    "전력",
+    "중요시설",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-POW-IN",
+   "name": "발전소 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D6",
+   "description": "발전소(D6) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "발전",
+    "전력",
+    "중요시설"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-SUP-OUT",
+   "name": "정비창고 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "E6",
+   "description": "정비창고(E6) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "보급",
+    "외부",
+    "접근",
+    "창고"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-SUP-GATE",
+   "name": "정비창고 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "E6",
+   "description": "정비창고(E6) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "보급",
+    "인원",
+    "창고",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-SUP-IN",
+   "name": "정비창고 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "E6",
+   "description": "정비창고(E6) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "보급",
+    "창고"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-HQ-OUT",
+   "name": "지휘통제동 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "F6",
+   "description": "지휘통제동(F6) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "본부",
+    "외부",
+    "작전",
+    "접근",
+    "지휘"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HQ-GATE",
+   "name": "지휘통제동 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "F6",
+   "description": "지휘통제동(F6) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "본부",
+    "인원",
+    "작전",
+    "지휘",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HQ-IN",
+   "name": "지휘통제동 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "F6",
+   "description": "지휘통제동(F6) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "본부",
+    "작전",
+    "지휘"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-TRN-OUT",
+   "name": "수송부 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "G6",
+   "description": "수송부(G6) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "수송",
+    "외부",
+    "접근",
+    "차량"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-TRN-GATE",
+   "name": "수송부 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "G6",
+   "description": "수송부(G6) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "수송",
+    "인원",
+    "차량",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-TRN-IN",
+   "name": "수송부 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "G6",
+   "description": "수송부(G6) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "수송",
+    "차량"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-BRK-OUT",
+   "name": "병영 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "H7",
+   "description": "병영(H7) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "병영",
+    "생활",
+    "외부",
+    "인원",
+    "접근"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-BRK-GATE",
+   "name": "병영 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "H7",
+   "description": "병영(H7) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "병영",
+    "생활",
+    "인원",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-BRK-IN",
+   "name": "병영 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "H7",
+   "description": "병영(H7) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "병영",
+    "생활",
+    "인원"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-MESS-OUT",
+   "name": "급식시설 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "I7",
+   "description": "급식시설(I7) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "급식",
+    "생활",
+    "외부",
+    "인원",
+    "접근"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-MESS-GATE",
+   "name": "급식시설 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "I7",
+   "description": "급식시설(I7) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "급식",
+    "생활",
+    "인원",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-MESS-IN",
+   "name": "급식시설 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "I7",
+   "description": "급식시설(I7) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "급식",
+    "내부",
+    "생활",
+    "인원"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-MED-OUT",
+   "name": "의무대 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "J7",
+   "description": "의무대(J7) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "외부",
+    "응급",
+    "의무",
+    "인원",
+    "접근"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-MED-GATE",
+   "name": "의무대 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "J7",
+   "description": "의무대(J7) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "응급",
+    "의무",
+    "인원",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-MED-IN",
+   "name": "의무대 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "J7",
+   "description": "의무대(J7) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "응급",
+    "의무",
+    "인원"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-RDR-OUT",
+   "name": "레이더 사이트 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "I2",
+   "description": "레이더 사이트(I2) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "레이더",
+    "방호",
+    "외부",
+    "접근",
+    "중요시설",
+    "탐지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RDR-GATE",
+   "name": "레이더 사이트 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "I2",
+   "description": "레이더 사이트(I2) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "레이더",
+    "방호",
+    "인원",
+    "중요시설",
+    "출입",
+    "탐지",
+    "통제"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-RDR-IN",
+   "name": "레이더 사이트 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "I2",
+   "description": "레이더 사이트(I2) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "내부",
+    "레이더",
+    "방호",
+    "중요시설",
+    "탐지"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-MET-OUT",
+   "name": "기상관측소 외부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "C2",
+   "description": "기상관측소(C2) 외부 전경 감시. 접근 인원·차량 확인.",
+   "tags": [
+    "관측",
+    "기상",
+    "외부",
+    "접근"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-MET-GATE",
+   "name": "기상관측소 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "C2",
+   "description": "기상관측소(C2) 출입구 감시. 출입 인원 신원 및 통제 상태 확인.",
+   "tags": [
+    "관측",
+    "기상",
+    "인원",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-MET-IN",
+   "name": "기상관측소 내부 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "C2",
+   "description": "기상관측소(C2) 내부 감시. 시설 내부 상황 및 이상 유무 확인.",
+   "tags": [
+    "관측",
+    "기상",
+    "내부"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-GATE-M-01",
+   "name": "기지 정문 진입로 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "A4",
+   "description": "기지 정문(A4) 진입로 감시. 진입 차량 대기열과 접근 상황 확인.",
+   "tags": [
+    "정문",
+    "진입",
+    "차량",
+    "출입"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-GATE-M-02",
+   "name": "기지 정문 차량 통제소 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "A4",
+   "description": "기지 정문(A4) 차량 통제소 감시. 차량 검문·검색 상황 확인.",
+   "tags": [
+    "검문",
+    "차량",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-GATE-M-03",
+   "name": "기지 정문 인원 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "A4",
+   "description": "기지 정문(A4) 도보 출입구 감시. 출입 인원 신원 확인.",
+   "tags": [
+    "인원",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "ANPR-GATE-M",
+   "name": "기지 정문 차량번호 인식 화면",
+   "category": "출입통제",
+   "feed_type": "시스템",
+   "cell": "A4",
+   "description": "기지 정문(A4) 차량번호 자동인식(ANPR) 결과 화면. 미등록 차량 경보 표시.",
+   "tags": [
+    "경보",
+    "번호인식",
+    "차량",
+    "출입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-GATE-R-01",
+   "name": "기지 후문 진입로 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "J5",
+   "description": "기지 후문(J5) 진입로 감시. 진입 차량 대기열과 접근 상황 확인.",
+   "tags": [
+    "진입",
+    "차량",
+    "출입",
+    "후문"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-GATE-R-02",
+   "name": "기지 후문 차량 통제소 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "J5",
+   "description": "기지 후문(J5) 차량 통제소 감시. 차량 검문·검색 상황 확인.",
+   "tags": [
+    "검문",
+    "차량",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-GATE-R-03",
+   "name": "기지 후문 인원 출입구 CCTV",
+   "category": "출입통제",
+   "feed_type": "CCTV",
+   "cell": "J5",
+   "description": "기지 후문(J5) 도보 출입구 감시. 출입 인원 신원 확인.",
+   "tags": [
+    "인원",
+    "출입",
+    "통제"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "ANPR-GATE-R",
+   "name": "기지 후문 차량번호 인식 화면",
+   "category": "출입통제",
+   "feed_type": "시스템",
+   "cell": "J5",
+   "description": "기지 후문(J5) 차량번호 자동인식(ANPR) 결과 화면. 미등록 차량 경보 표시.",
+   "tags": [
+    "경보",
+    "번호인식",
+    "차량",
+    "출입"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-GP-01",
+   "name": "정문초소 CCTV",
+   "category": "초소",
+   "feed_type": "CCTV",
+   "cell": "A4",
+   "description": "정문초소(A4) 감시. 서측 경계구역 담당 초병 근무 상태와 담당 구역 확인.",
+   "tags": [
+    "경계",
+    "서",
+    "초병",
+    "초소"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-GP-01-BODY",
+   "name": "정문초소 초병 바디캠",
+   "category": "초소",
+   "feed_type": "바디캠",
+   "cell": "A4",
+   "description": "정문초소 근무 초병 착용 바디캠 실시간 영상. 현장 1인칭 시야 확인.",
+   "tags": [
+    "바디캠",
+    "서",
+    "초병",
+    "초소",
+    "현장"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-GP-02",
+   "name": "북서초소 CCTV",
+   "category": "초소",
+   "feed_type": "CCTV",
+   "cell": "B1",
+   "description": "북서초소(B1) 감시. 북서측 경계구역 담당 초병 근무 상태와 담당 구역 확인.",
+   "tags": [
+    "경계",
+    "북서",
+    "초병",
+    "초소"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-GP-02-BODY",
+   "name": "북서초소 초병 바디캠",
+   "category": "초소",
+   "feed_type": "바디캠",
+   "cell": "B1",
+   "description": "북서초소 근무 초병 착용 바디캠 실시간 영상. 현장 1인칭 시야 확인.",
+   "tags": [
+    "바디캠",
+    "북서",
+    "초병",
+    "초소",
+    "현장"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-GP-03",
+   "name": "북측초소 CCTV",
+   "category": "초소",
+   "feed_type": "CCTV",
+   "cell": "E1",
+   "description": "북측초소(E1) 감시. 북측 경계구역 담당 초병 근무 상태와 담당 구역 확인.",
+   "tags": [
+    "경계",
+    "북",
+    "초병",
+    "초소"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-GP-03-BODY",
+   "name": "북측초소 초병 바디캠",
+   "category": "초소",
+   "feed_type": "바디캠",
+   "cell": "E1",
+   "description": "북측초소 근무 초병 착용 바디캠 실시간 영상. 현장 1인칭 시야 확인.",
+   "tags": [
+    "바디캠",
+    "북",
+    "초병",
+    "초소",
+    "현장"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-GP-04",
+   "name": "북동초소 CCTV",
+   "category": "초소",
+   "feed_type": "CCTV",
+   "cell": "H1",
+   "description": "북동초소(H1) 감시. 북동측 경계구역 담당 초병 근무 상태와 담당 구역 확인.",
+   "tags": [
+    "경계",
+    "북동",
+    "초병",
+    "초소"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-GP-04-BODY",
+   "name": "북동초소 초병 바디캠",
+   "category": "초소",
+   "feed_type": "바디캠",
+   "cell": "H1",
+   "description": "북동초소 근무 초병 착용 바디캠 실시간 영상. 현장 1인칭 시야 확인.",
+   "tags": [
+    "바디캠",
+    "북동",
+    "초병",
+    "초소",
+    "현장"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-GP-05",
+   "name": "동측초소 CCTV",
+   "category": "초소",
+   "feed_type": "CCTV",
+   "cell": "J2",
+   "description": "동측초소(J2) 감시. 동측 경계구역 담당 초병 근무 상태와 담당 구역 확인.",
+   "tags": [
+    "경계",
+    "동",
+    "초병",
+    "초소"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-GP-05-BODY",
+   "name": "동측초소 초병 바디캠",
+   "category": "초소",
+   "feed_type": "바디캠",
+   "cell": "J2",
+   "description": "동측초소 근무 초병 착용 바디캠 실시간 영상. 현장 1인칭 시야 확인.",
+   "tags": [
+    "동",
+    "바디캠",
+    "초병",
+    "초소",
+    "현장"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-GP-06",
+   "name": "남동초소 CCTV",
+   "category": "초소",
+   "feed_type": "CCTV",
+   "cell": "J6",
+   "description": "남동초소(J6) 감시. 남동측 경계구역 담당 초병 근무 상태와 담당 구역 확인.",
+   "tags": [
+    "경계",
+    "남동",
+    "초병",
+    "초소"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-GP-06-BODY",
+   "name": "남동초소 초병 바디캠",
+   "category": "초소",
+   "feed_type": "바디캠",
+   "cell": "J6",
+   "description": "남동초소 근무 초병 착용 바디캠 실시간 영상. 현장 1인칭 시야 확인.",
+   "tags": [
+    "남동",
+    "바디캠",
+    "초병",
+    "초소",
+    "현장"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-GP-07",
+   "name": "남측초소 CCTV",
+   "category": "초소",
+   "feed_type": "CCTV",
+   "cell": "E7",
+   "description": "남측초소(E7) 감시. 남측 경계구역 담당 초병 근무 상태와 담당 구역 확인.",
+   "tags": [
+    "경계",
+    "남",
+    "초병",
+    "초소"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-GP-07-BODY",
+   "name": "남측초소 초병 바디캠",
+   "category": "초소",
+   "feed_type": "바디캠",
+   "cell": "E7",
+   "description": "남측초소 근무 초병 착용 바디캠 실시간 영상. 현장 1인칭 시야 확인.",
+   "tags": [
+    "남",
+    "바디캠",
+    "초병",
+    "초소",
+    "현장"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-GP-08",
+   "name": "남서초소 CCTV",
+   "category": "초소",
+   "feed_type": "CCTV",
+   "cell": "B7",
+   "description": "남서초소(B7) 감시. 남서측 경계구역 담당 초병 근무 상태와 담당 구역 확인.",
+   "tags": [
+    "경계",
+    "남서",
+    "초병",
+    "초소"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-GP-08-BODY",
+   "name": "남서초소 초병 바디캠",
+   "category": "초소",
+   "feed_type": "바디캠",
+   "cell": "B7",
+   "description": "남서초소 근무 초병 착용 바디캠 실시간 영상. 현장 1인칭 시야 확인.",
+   "tags": [
+    "남서",
+    "바디캠",
+    "초병",
+    "초소",
+    "현장"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-AAA-01",
+   "name": "이동형 대공포 1호 진지 CCTV",
+   "category": "대공방어",
+   "feed_type": "CCTV",
+   "cell": "C2",
+   "description": "이동형 대공포 1호 진지(C2) 감시. 장비 전개 상태와 사수 배치 확인.",
+   "tags": [
+    "대공",
+    "대응",
+    "무인기",
+    "방공",
+    "진지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SCOPE-AAA-01",
+   "name": "이동형 대공포 1호 조준경 화면",
+   "category": "대공방어",
+   "feed_type": "조준경",
+   "cell": "C2",
+   "description": "이동형 대공포 1호의 조준경 영상. 추적 중인 표적을 사수 시점으로 확인.",
+   "tags": [
+    "대공",
+    "무인기",
+    "방공",
+    "조준",
+    "추적",
+    "표적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-AAA-02",
+   "name": "이동형 대공포 2호 진지 CCTV",
+   "category": "대공방어",
+   "feed_type": "CCTV",
+   "cell": "G2",
+   "description": "이동형 대공포 2호 진지(G2) 감시. 장비 전개 상태와 사수 배치 확인.",
+   "tags": [
+    "대공",
+    "대응",
+    "무인기",
+    "방공",
+    "진지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SCOPE-AAA-02",
+   "name": "이동형 대공포 2호 조준경 화면",
+   "category": "대공방어",
+   "feed_type": "조준경",
+   "cell": "G2",
+   "description": "이동형 대공포 2호의 조준경 영상. 추적 중인 표적을 사수 시점으로 확인.",
+   "tags": [
+    "대공",
+    "무인기",
+    "방공",
+    "조준",
+    "추적",
+    "표적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-AAA-03",
+   "name": "이동형 대공포 3호 진지 CCTV",
+   "category": "대공방어",
+   "feed_type": "CCTV",
+   "cell": "D7",
+   "description": "이동형 대공포 3호 진지(D7) 감시. 장비 전개 상태와 사수 배치 확인.",
+   "tags": [
+    "대공",
+    "대응",
+    "무인기",
+    "방공",
+    "진지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SCOPE-AAA-03",
+   "name": "이동형 대공포 3호 조준경 화면",
+   "category": "대공방어",
+   "feed_type": "조준경",
+   "cell": "D7",
+   "description": "이동형 대공포 3호의 조준경 영상. 추적 중인 표적을 사수 시점으로 확인.",
+   "tags": [
+    "대공",
+    "무인기",
+    "방공",
+    "조준",
+    "추적",
+    "표적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-AAA-04",
+   "name": "이동형 대공포 4호 진지 CCTV",
+   "category": "대공방어",
+   "feed_type": "CCTV",
+   "cell": "H6",
+   "description": "이동형 대공포 4호 진지(H6) 감시. 장비 전개 상태와 사수 배치 확인.",
+   "tags": [
+    "대공",
+    "대응",
+    "무인기",
+    "방공",
+    "진지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SCOPE-AAA-04",
+   "name": "이동형 대공포 4호 조준경 화면",
+   "category": "대공방어",
+   "feed_type": "조준경",
+   "cell": "H6",
+   "description": "이동형 대공포 4호의 조준경 영상. 추적 중인 표적을 사수 시점으로 확인.",
+   "tags": [
+    "대공",
+    "무인기",
+    "방공",
+    "조준",
+    "추적",
+    "표적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-MP-01",
+   "name": "휴대용 대공유도탄 1조 진지 CCTV",
+   "category": "대공방어",
+   "feed_type": "CCTV",
+   "cell": "D1",
+   "description": "휴대용 대공유도탄 1조 진지(D1) 감시. 장비 전개 상태와 사수 배치 확인.",
+   "tags": [
+    "대공",
+    "대응",
+    "무인기",
+    "방공",
+    "진지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SCOPE-MP-01",
+   "name": "휴대용 대공유도탄 1조 조준경 화면",
+   "category": "대공방어",
+   "feed_type": "조준경",
+   "cell": "D1",
+   "description": "휴대용 대공유도탄 1조의 조준경 영상. 추적 중인 표적을 사수 시점으로 확인.",
+   "tags": [
+    "대공",
+    "무인기",
+    "방공",
+    "조준",
+    "추적",
+    "표적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-MP-02",
+   "name": "휴대용 대공유도탄 2조 진지 CCTV",
+   "category": "대공방어",
+   "feed_type": "CCTV",
+   "cell": "J3",
+   "description": "휴대용 대공유도탄 2조 진지(J3) 감시. 장비 전개 상태와 사수 배치 확인.",
+   "tags": [
+    "대공",
+    "대응",
+    "무인기",
+    "방공",
+    "진지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SCOPE-MP-02",
+   "name": "휴대용 대공유도탄 2조 조준경 화면",
+   "category": "대공방어",
+   "feed_type": "조준경",
+   "cell": "J3",
+   "description": "휴대용 대공유도탄 2조의 조준경 영상. 추적 중인 표적을 사수 시점으로 확인.",
+   "tags": [
+    "대공",
+    "무인기",
+    "방공",
+    "조준",
+    "추적",
+    "표적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-MP-03",
+   "name": "휴대용 대공유도탄 3조 진지 CCTV",
+   "category": "대공방어",
+   "feed_type": "CCTV",
+   "cell": "F7",
+   "description": "휴대용 대공유도탄 3조 진지(F7) 감시. 장비 전개 상태와 사수 배치 확인.",
+   "tags": [
+    "대공",
+    "대응",
+    "무인기",
+    "방공",
+    "진지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SCOPE-MP-03",
+   "name": "휴대용 대공유도탄 3조 조준경 화면",
+   "category": "대공방어",
+   "feed_type": "조준경",
+   "cell": "F7",
+   "description": "휴대용 대공유도탄 3조의 조준경 영상. 추적 중인 표적을 사수 시점으로 확인.",
+   "tags": [
+    "대공",
+    "무인기",
+    "방공",
+    "조준",
+    "추적",
+    "표적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "TOD-N",
+   "name": "북측 열상감시장비(TOD)",
+   "category": "열상감시",
+   "feed_type": "열상",
+   "cell": "E1",
+   "description": "북측 방향(E1) 열상감시장비. 야간·안개·저시정 상황에서 광학 CCTV를 대체하는 주 감시자산.",
+   "tags": [
+    "TOD",
+    "감시",
+    "북측",
+    "안개",
+    "야간",
+    "열상",
+    "저시정"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "TOD-S",
+   "name": "남측 열상감시장비(TOD)",
+   "category": "열상감시",
+   "feed_type": "열상",
+   "cell": "E7",
+   "description": "남측 방향(E7) 열상감시장비. 야간·안개·저시정 상황에서 광학 CCTV를 대체하는 주 감시자산.",
+   "tags": [
+    "TOD",
+    "감시",
+    "남측",
+    "안개",
+    "야간",
+    "열상",
+    "저시정"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "TOD-W",
+   "name": "서측 열상감시장비(TOD)",
+   "category": "열상감시",
+   "feed_type": "열상",
+   "cell": "A4",
+   "description": "서측 방향(A4) 열상감시장비. 야간·안개·저시정 상황에서 광학 CCTV를 대체하는 주 감시자산.",
+   "tags": [
+    "TOD",
+    "감시",
+    "서측",
+    "안개",
+    "야간",
+    "열상",
+    "저시정"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "TOD-E",
+   "name": "동측 열상감시장비(TOD)",
+   "category": "열상감시",
+   "feed_type": "열상",
+   "cell": "J4",
+   "description": "동측 방향(J4) 열상감시장비. 야간·안개·저시정 상황에서 광학 CCTV를 대체하는 주 감시자산.",
+   "tags": [
+    "TOD",
+    "감시",
+    "동측",
+    "안개",
+    "야간",
+    "열상",
+    "저시정"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "TOD-NW",
+   "name": "북서 열상감시장비(TOD)",
+   "category": "열상감시",
+   "feed_type": "열상",
+   "cell": "B1",
+   "description": "북서 방향(B1) 열상감시장비. 야간·안개·저시정 상황에서 광학 CCTV를 대체하는 주 감시자산.",
+   "tags": [
+    "TOD",
+    "감시",
+    "북서",
+    "안개",
+    "야간",
+    "열상",
+    "저시정"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "TOD-NE",
+   "name": "북동 열상감시장비(TOD)",
+   "category": "열상감시",
+   "feed_type": "열상",
+   "cell": "H1",
+   "description": "북동 방향(H1) 열상감시장비. 야간·안개·저시정 상황에서 광학 CCTV를 대체하는 주 감시자산.",
+   "tags": [
+    "TOD",
+    "감시",
+    "북동",
+    "안개",
+    "야간",
+    "열상",
+    "저시정"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "TOD-SW",
+   "name": "남서 열상감시장비(TOD)",
+   "category": "열상감시",
+   "feed_type": "열상",
+   "cell": "B7",
+   "description": "남서 방향(B7) 열상감시장비. 야간·안개·저시정 상황에서 광학 CCTV를 대체하는 주 감시자산.",
+   "tags": [
+    "TOD",
+    "감시",
+    "남서",
+    "안개",
+    "야간",
+    "열상",
+    "저시정"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "TOD-SE",
+   "name": "남동 열상감시장비(TOD)",
+   "category": "열상감시",
+   "feed_type": "열상",
+   "cell": "H7",
+   "description": "남동 방향(H7) 열상감시장비. 야간·안개·저시정 상황에서 광학 CCTV를 대체하는 주 감시자산.",
+   "tags": [
+    "TOD",
+    "감시",
+    "남동",
+    "안개",
+    "야간",
+    "열상",
+    "저시정"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "RDR-TRACK",
+   "name": "레이더 항적 종합 화면",
+   "category": "탐지체계",
+   "feed_type": "시스템",
+   "cell": "I2",
+   "description": "기지 레이더가 탐지한 전체 항적을 종합 표시. 미식별 항적은 별도 강조.",
+   "tags": [
+    "레이더",
+    "무인기",
+    "탐지",
+    "항공기",
+    "항적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "RDR-LOW",
+   "name": "저고도 탐지 레이더 화면",
+   "category": "탐지체계",
+   "feed_type": "시스템",
+   "cell": "I2",
+   "description": "저고도 침투 표적 전용 탐지 화면. 무인기·경항공기 탐지에 사용.",
+   "tags": [
+    "레이더",
+    "무인기",
+    "저고도",
+    "침투",
+    "탐지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "RDR-RAW",
+   "name": "레이더 원시신호 화면",
+   "category": "탐지체계",
+   "feed_type": "시스템",
+   "cell": "I2",
+   "description": "레이더 원시 신호(PPI) 화면. 판독관 정밀 분석용.",
+   "tags": [
+    "레이더",
+    "분석",
+    "원시"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "UAS-DET",
+   "name": "드론탐지체계 종합 화면",
+   "category": "탐지체계",
+   "feed_type": "시스템",
+   "cell": "F3",
+   "description": "무선주파수 기반 드론탐지체계. 탐지된 무인기의 위치·기종·조종자 추정 위치 표시.",
+   "tags": [
+    "RF",
+    "드론",
+    "무인기",
+    "조종자",
+    "탐지"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "UAS-RF",
+   "name": "드론 주파수 분석 화면",
+   "category": "탐지체계",
+   "feed_type": "시스템",
+   "cell": "F3",
+   "description": "탐지된 무인기의 제어 주파수 분석 결과. 기종 식별과 재밍 대응 판단에 사용.",
+   "tags": [
+    "드론",
+    "무인기",
+    "식별",
+    "재밍",
+    "주파수"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "UAS-TRACK",
+   "name": "무인기 추적 항적도",
+   "category": "탐지체계",
+   "feed_type": "시스템",
+   "cell": "F3",
+   "description": "탐지된 무인기의 이동 궤적을 기지 배치도 위에 중첩 표시.",
+   "tags": [
+    "궤적",
+    "드론",
+    "무인기",
+    "추적",
+    "항적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "ACFT-SCHED",
+   "name": "비행 스케줄 화면",
+   "category": "운영정보",
+   "feed_type": "시스템",
+   "cell": "G3",
+   "description": "당일 비행 계획과 실제 이착륙 현황. 미계획 항적 판단 시 대조용.",
+   "tags": [
+    "계획",
+    "비행",
+    "스케줄",
+    "이착륙"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "MET-OBS",
+   "name": "기상 관측 종합 화면",
+   "category": "기상",
+   "feed_type": "시스템",
+   "cell": "C2",
+   "description": "풍향·풍속·시정·운고·기온 실시간 관측값. 시정 제한 판단의 근거 자료.",
+   "tags": [
+    "관측",
+    "기상",
+    "시정",
+    "안개",
+    "풍속",
+    "흐림"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "MET-RDR",
+   "name": "기상 레이더 화면",
+   "category": "기상",
+   "feed_type": "시스템",
+   "cell": "C2",
+   "description": "강수 에코와 기상 셀 이동 표시. 뇌우·강수 접근 판단용.",
+   "tags": [
+    "강수",
+    "기상",
+    "뇌우",
+    "레이더"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "MET-SAT",
+   "name": "기상 위성 영상",
+   "category": "기상",
+   "feed_type": "시스템",
+   "cell": "C2",
+   "description": "광역 위성 구름 영상. 광역 기상 추세 확인용.",
+   "tags": [
+    "구름",
+    "기상",
+    "위성"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "MET-FCST",
+   "name": "항공 기상 예보 화면",
+   "category": "기상",
+   "feed_type": "시스템",
+   "cell": "C2",
+   "description": "향후 6시간 항공 기상 예보(TAF). 비행 가부 판단용.",
+   "tags": [
+    "기상",
+    "비행",
+    "예보"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "MET-RVR",
+   "name": "활주로 가시거리(RVR) 화면",
+   "category": "기상",
+   "feed_type": "시스템",
+   "cell": "E4",
+   "description": "활주로 가시거리 실시간 측정값. 저시정 이착륙 가부 판단용.",
+   "tags": [
+    "기상",
+    "시정",
+    "저시정",
+    "활주로"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "NAV-TACAN",
+   "name": "전술항법장치(TACAN) 상태 화면",
+   "category": "항행안전",
+   "feed_type": "시스템",
+   "cell": "B4",
+   "description": "전술항법장치(TACAN)(B4) 정상 작동 여부와 고장 경보 표시.",
+   "tags": [
+    "등화",
+    "비행",
+    "장비상태",
+    "항행"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "NAV-LLZ",
+   "name": "로컬라이저 상태 화면",
+   "category": "항행안전",
+   "feed_type": "시스템",
+   "cell": "B4",
+   "description": "로컬라이저(B4) 정상 작동 여부와 고장 경보 표시.",
+   "tags": [
+    "등화",
+    "비행",
+    "장비상태",
+    "항행"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "NAV-GP",
+   "name": "글라이드슬로프 상태 화면",
+   "category": "항행안전",
+   "feed_type": "시스템",
+   "cell": "H4",
+   "description": "글라이드슬로프(H4) 정상 작동 여부와 고장 경보 표시.",
+   "tags": [
+    "등화",
+    "비행",
+    "장비상태",
+    "항행"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "NAV-PAPI",
+   "name": "진입각지시등(PAPI) 상태 화면",
+   "category": "항행안전",
+   "feed_type": "시스템",
+   "cell": "C4",
+   "description": "진입각지시등(PAPI)(C4) 정상 작동 여부와 고장 경보 표시.",
+   "tags": [
+    "등화",
+    "비행",
+    "장비상태",
+    "항행"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "NAV-ALS",
+   "name": "진입등화계통 상태 화면",
+   "category": "항행안전",
+   "feed_type": "시스템",
+   "cell": "C4",
+   "description": "진입등화계통(C4) 정상 작동 여부와 고장 경보 표시.",
+   "tags": [
+    "등화",
+    "비행",
+    "장비상태",
+    "항행"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "NAV-RWY-LGT",
+   "name": "활주로 등화계통 상태 화면",
+   "category": "항행안전",
+   "feed_type": "시스템",
+   "cell": "E4",
+   "description": "활주로 등화계통(E4) 정상 작동 여부와 고장 경보 표시.",
+   "tags": [
+    "등화",
+    "비행",
+    "장비상태",
+    "항행"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CAM-PTL-01",
+   "name": "1호 순찰차 차량탑재 카메라",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "B3",
+   "description": "1호 순찰차에 탑재된 이동형 카메라. 현재 위치 B3 부근 순찰 중.",
+   "tags": [
+    "경계",
+    "순찰",
+    "이동형",
+    "차량"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CAM-PTL-02",
+   "name": "2호 순찰차 차량탑재 카메라",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "D1",
+   "description": "2호 순찰차에 탑재된 이동형 카메라. 현재 위치 D1 부근 순찰 중.",
+   "tags": [
+    "경계",
+    "순찰",
+    "이동형",
+    "차량"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CAM-PTL-03",
+   "name": "3호 순찰차 차량탑재 카메라",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "G1",
+   "description": "3호 순찰차에 탑재된 이동형 카메라. 현재 위치 G1 부근 순찰 중.",
+   "tags": [
+    "경계",
+    "순찰",
+    "이동형",
+    "차량"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CAM-PTL-04",
+   "name": "4호 순찰차 차량탑재 카메라",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "J4",
+   "description": "4호 순찰차에 탑재된 이동형 카메라. 현재 위치 J4 부근 순찰 중.",
+   "tags": [
+    "경계",
+    "순찰",
+    "이동형",
+    "차량"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CAM-PTL-05",
+   "name": "5호 순찰차 차량탑재 카메라",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "F7",
+   "description": "5호 순찰차에 탑재된 이동형 카메라. 현재 위치 F7 부근 순찰 중.",
+   "tags": [
+    "경계",
+    "순찰",
+    "이동형",
+    "차량"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CAM-PTL-06",
+   "name": "6호 순찰차 차량탑재 카메라",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "B5",
+   "description": "6호 순찰차에 탑재된 이동형 카메라. 현재 위치 B5 부근 순찰 중.",
+   "tags": [
+    "경계",
+    "순찰",
+    "이동형",
+    "차량"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CAM-UAV-01",
+   "name": "1호 감시용 무인기 영상",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "E2",
+   "description": "기지 자체 운용 감시용 무인기 1호기의 실시간 영상. 현재 E2 상공.",
+   "tags": [
+    "감시",
+    "공중",
+    "무인기",
+    "이동형"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-UAV-02",
+   "name": "2호 감시용 무인기 영상",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "H5",
+   "description": "기지 자체 운용 감시용 무인기 2호기의 실시간 영상. 현재 H5 상공.",
+   "tags": [
+    "감시",
+    "공중",
+    "무인기",
+    "이동형"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CAM-UAV-03",
+   "name": "3호 감시용 무인기 영상",
+   "category": "이동형",
+   "feed_type": "이동형",
+   "cell": "C5",
+   "description": "기지 자체 운용 감시용 무인기 3호기의 실시간 영상. 현재 C5 상공.",
+   "tags": [
+    "감시",
+    "공중",
+    "무인기",
+    "이동형"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "SYS-BASEMAP",
+   "name": "기지 전장 상황도",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "E4",
+   "description": "기지 전체 배치도 위에 항적·초소·대공자산 상태를 중첩한 종합 상황도. AI와 운용자가 공유하는 기준 화면.",
+   "tags": [
+    "배치",
+    "상황도",
+    "종합",
+    "지도"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SYS-SITBOARD",
+   "name": "작전상황판",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "F6",
+   "description": "진행 중인 사태를 우선순위 순으로 표시하는 현황판.",
+   "tags": [
+    "사태",
+    "상황판",
+    "우선순위"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "SYS-ADS",
+   "name": "대공방어 자산 현황",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "F6",
+   "description": "대공포·휴대용 유도탄의 위치, 상태, 교전 가능 범위 현황.",
+   "tags": [
+    "교전",
+    "대공",
+    "방공",
+    "자산",
+    "현황"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SYS-SENTRY",
+   "name": "초소 근무 현황",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "F6",
+   "description": "8개 초소의 근무 인원과 보고 상태 현황.",
+   "tags": [
+    "근무",
+    "초병",
+    "초소",
+    "현황"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "SYS-LOG",
+   "name": "작전상황일지",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "F6",
+   "description": "자동 기록 중인 작전상황일지 화면.",
+   "tags": [
+    "기록",
+    "일지"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "SYS-COMMS",
+   "name": "통신망 상태 화면",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "G3",
+   "description": "지휘통신망·전술망 소통 상태와 장애 구간 표시.",
+   "tags": [
+    "망",
+    "장애",
+    "통신"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "SYS-ALERT",
+   "name": "경보 발령 현황",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "F6",
+   "description": "현재 발령된 경보 수준과 발령 이력.",
+   "tags": [
+    "경보",
+    "발령",
+    "현황"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "SYS-CBRN",
+   "name": "화생방 탐지 현황",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "D6",
+   "description": "기지 내 화생방 탐지기 상태와 경보 현황.",
+   "tags": [
+    "경보",
+    "탐지",
+    "화생방"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "SYS-BASEMAP-WIND",
+   "name": "비행단 전장상황도 (바람방향 표시)",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "E4",
+   "description": "기지 전장 상황도에 풍향·풍속을 중첩 표시. 낙탄 연기나 화생방 오염 확산 방향 판단에 사용.",
+   "tags": [
+    "낙탄",
+    "바람",
+    "상황도",
+    "지도",
+    "풍향",
+    "화생방",
+    "확산"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SYS-AD-WATCH",
+   "name": "대공상황감시체계",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "I2",
+   "description": "대공 위협 항적을 종합 표시하는 감시체계 화면. 적 항공기·미사일 접근 판단의 주 화면.",
+   "tags": [
+    "감시체계",
+    "대공",
+    "미사일",
+    "위협",
+    "적기",
+    "접근",
+    "항적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "SYS-THEATER",
+   "name": "전구 전장상황도",
+   "category": "체계화면",
+   "feed_type": "시스템",
+   "cell": "E4",
+   "description": "기지 범위를 넘어선 전구 단위 전장 상황도. 상급부대 상황과 연계 판단 시 사용.",
+   "tags": [
+    "광역",
+    "미사일",
+    "상급부대",
+    "상황도",
+    "적기",
+    "전구"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "RDR-SSR",
+   "name": "SSR 화면 (2차감시레이더)",
+   "category": "탐지체계",
+   "feed_type": "시스템",
+   "cell": "I2",
+   "description": "2차감시레이더(SSR) 화면. 피아식별(IFF) 응답으로 아군기와 미상 항적을 구분.",
+   "tags": [
+    "IFF",
+    "SSR",
+    "드론",
+    "레이더",
+    "무인기",
+    "피아식별",
+    "항적"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-CVT-01",
+   "name": "북서 배수로 암거 1번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "B1",
+   "description": "북서 외곽 울타리 하부 배수로 암거(B1) 감시. 울타리를 우회하는 침투 경로로 우선 감시 대상. 폭우 시 유실 여부도 함께 확인.",
+   "tags": [
+    "경계",
+    "배수로",
+    "북서",
+    "암거",
+    "취약지점",
+    "침투"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-CVT-02",
+   "name": "북 배수로 암거 2번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "D1",
+   "description": "북 외곽 울타리 하부 배수로 암거(D1) 감시. 울타리를 우회하는 침투 경로로 우선 감시 대상. 폭우 시 유실 여부도 함께 확인.",
+   "tags": [
+    "경계",
+    "배수로",
+    "북",
+    "암거",
+    "취약지점",
+    "침투"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-CVT-03",
+   "name": "북동 배수로 암거 3번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "G1",
+   "description": "북동 외곽 울타리 하부 배수로 암거(G1) 감시. 울타리를 우회하는 침투 경로로 우선 감시 대상. 폭우 시 유실 여부도 함께 확인.",
+   "tags": [
+    "경계",
+    "배수로",
+    "북동",
+    "암거",
+    "취약지점",
+    "침투"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-CVT-04",
+   "name": "서 배수로 암거 4번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "A5",
+   "description": "서 외곽 울타리 하부 배수로 암거(A5) 감시. 울타리를 우회하는 침투 경로로 우선 감시 대상. 폭우 시 유실 여부도 함께 확인.",
+   "tags": [
+    "경계",
+    "배수로",
+    "서",
+    "암거",
+    "취약지점",
+    "침투"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-CVT-05",
+   "name": "남동 배수로 암거 5번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "J6",
+   "description": "남동 외곽 울타리 하부 배수로 암거(J6) 감시. 울타리를 우회하는 침투 경로로 우선 감시 대상. 폭우 시 유실 여부도 함께 확인.",
+   "tags": [
+    "경계",
+    "남동",
+    "배수로",
+    "암거",
+    "취약지점",
+    "침투"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-CVT-06",
+   "name": "남서 배수로 암거 6번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "C7",
+   "description": "남서 외곽 울타리 하부 배수로 암거(C7) 감시. 울타리를 우회하는 침투 경로로 우선 감시 대상. 폭우 시 유실 여부도 함께 확인.",
+   "tags": [
+    "경계",
+    "남서",
+    "배수로",
+    "암거",
+    "취약지점",
+    "침투"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-CVT-07",
+   "name": "남 배수로 암거 7번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "F7",
+   "description": "남 외곽 울타리 하부 배수로 암거(F7) 감시. 울타리를 우회하는 침투 경로로 우선 감시 대상. 폭우 시 유실 여부도 함께 확인.",
+   "tags": [
+    "경계",
+    "남",
+    "배수로",
+    "암거",
+    "취약지점",
+    "침투"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-CVT-08",
+   "name": "동 배수로 암거 8번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "J2",
+   "description": "동 외곽 울타리 하부 배수로 암거(J2) 감시. 울타리를 우회하는 침투 경로로 우선 감시 대상. 폭우 시 유실 여부도 함께 확인.",
+   "tags": [
+    "경계",
+    "동",
+    "배수로",
+    "암거",
+    "취약지점",
+    "침투"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-PTR-01",
+   "name": "내부 순찰로 1구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "B2",
+   "description": "기지 내부 순찰로 1구간(B2) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-02",
+   "name": "내부 순찰로 2구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "B4",
+   "description": "기지 내부 순찰로 2구간(B4) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-03",
+   "name": "내부 순찰로 3구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "B6",
+   "description": "기지 내부 순찰로 3구간(B6) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-04",
+   "name": "내부 순찰로 4구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "D7",
+   "description": "기지 내부 순찰로 4구간(D7) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-05",
+   "name": "내부 순찰로 5구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "F7",
+   "description": "기지 내부 순찰로 5구간(F7) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-06",
+   "name": "내부 순찰로 6구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "H7",
+   "description": "기지 내부 순찰로 6구간(H7) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-07",
+   "name": "내부 순찰로 7구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "J5",
+   "description": "기지 내부 순찰로 7구간(J5) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-08",
+   "name": "내부 순찰로 8구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "J3",
+   "description": "기지 내부 순찰로 8구간(J3) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-09",
+   "name": "내부 순찰로 9구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "H1",
+   "description": "기지 내부 순찰로 9구간(H1) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-10",
+   "name": "내부 순찰로 10구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "F1",
+   "description": "기지 내부 순찰로 10구간(F1) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-11",
+   "name": "내부 순찰로 11구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "D1",
+   "description": "기지 내부 순찰로 11구간(D1) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PTR-12",
+   "name": "내부 순찰로 12구간 CCTV",
+   "category": "순찰로",
+   "feed_type": "CCTV",
+   "cell": "C3",
+   "description": "기지 내부 순찰로 12구간(C3) 감시. 순찰조 이동 경로와 이상 유무 확인.",
+   "tags": [
+    "경계",
+    "내부",
+    "순찰",
+    "순찰로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-ROOF-TWR",
+   "name": "관제탑 옥상 광역 카메라",
+   "category": "광역감시",
+   "feed_type": "CCTV",
+   "cell": "F3",
+   "description": "관제탑(F3) 옥상에 설치된 광역 감시 카메라. 360도 회전으로 주변 구역을 넓게 조망.",
+   "tags": [
+    "PTZ",
+    "감시",
+    "광역",
+    "옥상",
+    "조망"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-ROOF-HQ",
+   "name": "지휘통제동 옥상 광역 카메라",
+   "category": "광역감시",
+   "feed_type": "CCTV",
+   "cell": "F6",
+   "description": "지휘통제동(F6) 옥상에 설치된 광역 감시 카메라. 360도 회전으로 주변 구역을 넓게 조망.",
+   "tags": [
+    "PTZ",
+    "감시",
+    "광역",
+    "옥상",
+    "조망"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-ROOF-BOC",
+   "name": "기지작전동 옥상 광역 카메라",
+   "category": "광역감시",
+   "feed_type": "CCTV",
+   "cell": "G3",
+   "description": "기지작전동(G3) 옥상에 설치된 광역 감시 카메라. 360도 회전으로 주변 구역을 넓게 조망.",
+   "tags": [
+    "PTZ",
+    "감시",
+    "광역",
+    "옥상",
+    "조망"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-ROOF-HGR1",
+   "name": "제1격납고 옥상 광역 카메라",
+   "category": "광역감시",
+   "feed_type": "CCTV",
+   "cell": "D3",
+   "description": "제1격납고(D3) 옥상에 설치된 광역 감시 카메라. 360도 회전으로 주변 구역을 넓게 조망.",
+   "tags": [
+    "PTZ",
+    "감시",
+    "광역",
+    "옥상",
+    "조망"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-ROOF-BRK",
+   "name": "병영 옥상 광역 카메라",
+   "category": "광역감시",
+   "feed_type": "CCTV",
+   "cell": "H7",
+   "description": "병영(H7) 옥상에 설치된 광역 감시 카메라. 360도 회전으로 주변 구역을 넓게 조망.",
+   "tags": [
+    "PTZ",
+    "감시",
+    "광역",
+    "옥상",
+    "조망"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-ROOF-MNT",
+   "name": "정비고 옥상 광역 카메라",
+   "category": "광역감시",
+   "feed_type": "CCTV",
+   "cell": "I3",
+   "description": "정비고(I3) 옥상에 설치된 광역 감시 카메라. 360도 회전으로 주변 구역을 넓게 조망.",
+   "tags": [
+    "PTZ",
+    "감시",
+    "광역",
+    "옥상",
+    "조망"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-LT-01",
+   "name": "1번 조명탑 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "B2",
+   "description": "1번 경계 조명탑(B2) 부속 카메라. 조명 점등 상태와 조명 사각지대 확인.",
+   "tags": [
+    "경계",
+    "사각지대",
+    "야간",
+    "조명"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-LT-02",
+   "name": "2번 조명탑 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "D1",
+   "description": "2번 경계 조명탑(D1) 부속 카메라. 조명 점등 상태와 조명 사각지대 확인.",
+   "tags": [
+    "경계",
+    "사각지대",
+    "야간",
+    "조명"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-LT-03",
+   "name": "3번 조명탑 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "G1",
+   "description": "3번 경계 조명탑(G1) 부속 카메라. 조명 점등 상태와 조명 사각지대 확인.",
+   "tags": [
+    "경계",
+    "사각지대",
+    "야간",
+    "조명"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-LT-04",
+   "name": "4번 조명탑 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "J4",
+   "description": "4번 경계 조명탑(J4) 부속 카메라. 조명 점등 상태와 조명 사각지대 확인.",
+   "tags": [
+    "경계",
+    "사각지대",
+    "야간",
+    "조명"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-LT-05",
+   "name": "5번 조명탑 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "E7",
+   "description": "5번 경계 조명탑(E7) 부속 카메라. 조명 점등 상태와 조명 사각지대 확인.",
+   "tags": [
+    "경계",
+    "사각지대",
+    "야간",
+    "조명"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-LT-06",
+   "name": "6번 조명탑 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "B6",
+   "description": "6번 경계 조명탑(B6) 부속 카메라. 조명 점등 상태와 조명 사각지대 확인.",
+   "tags": [
+    "경계",
+    "사각지대",
+    "야간",
+    "조명"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-RLGT-01",
+   "name": "활주로 등화 1구간 CCTV",
+   "category": "항행안전",
+   "feed_type": "CCTV",
+   "cell": "C4",
+   "description": "활주로 등화 1구간(C4) 점등 상태 감시. 등화 고장 시 야간 이착륙 제한.",
+   "tags": [
+    "등화",
+    "야간",
+    "이착륙",
+    "장비상태",
+    "활주로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-RLGT-02",
+   "name": "활주로 등화 2구간 CCTV",
+   "category": "항행안전",
+   "feed_type": "CCTV",
+   "cell": "E4",
+   "description": "활주로 등화 2구간(E4) 점등 상태 감시. 등화 고장 시 야간 이착륙 제한.",
+   "tags": [
+    "등화",
+    "야간",
+    "이착륙",
+    "장비상태",
+    "활주로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-RLGT-03",
+   "name": "활주로 등화 3구간 CCTV",
+   "category": "항행안전",
+   "feed_type": "CCTV",
+   "cell": "G4",
+   "description": "활주로 등화 3구간(G4) 점등 상태 감시. 등화 고장 시 야간 이착륙 제한.",
+   "tags": [
+    "등화",
+    "야간",
+    "이착륙",
+    "장비상태",
+    "활주로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-RLGT-04",
+   "name": "활주로 등화 4구간 CCTV",
+   "category": "항행안전",
+   "feed_type": "CCTV",
+   "cell": "H4",
+   "description": "활주로 등화 4구간(H4) 점등 상태 감시. 등화 고장 시 야간 이착륙 제한.",
+   "tags": [
+    "등화",
+    "야간",
+    "이착륙",
+    "장비상태",
+    "활주로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-RLGT-05",
+   "name": "활주로 등화 5구간 CCTV",
+   "category": "항행안전",
+   "feed_type": "CCTV",
+   "cell": "D4",
+   "description": "활주로 등화 5구간(D4) 점등 상태 감시. 등화 고장 시 야간 이착륙 제한.",
+   "tags": [
+    "등화",
+    "야간",
+    "이착륙",
+    "장비상태",
+    "활주로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-RLGT-06",
+   "name": "활주로 등화 6구간 CCTV",
+   "category": "항행안전",
+   "feed_type": "CCTV",
+   "cell": "F4",
+   "description": "활주로 등화 6구간(F4) 점등 상태 감시. 등화 고장 시 야간 이착륙 제한.",
+   "tags": [
+    "등화",
+    "야간",
+    "이착륙",
+    "장비상태",
+    "활주로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-FUEL-F1",
+   "name": "급유전 1번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "H5",
+   "description": "급유전 1번(H5) 감시. 유류 누출·화재 징후와 비인가 접근 확인.",
+   "tags": [
+    "급유",
+    "누출",
+    "유류",
+    "중요시설",
+    "화재"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-FUEL-F2",
+   "name": "급유전 2번 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "I5",
+   "description": "급유전 2번(I5) 감시. 유류 누출·화재 징후와 비인가 접근 확인.",
+   "tags": [
+    "급유",
+    "누출",
+    "유류",
+    "중요시설",
+    "화재"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-FUEL-P1",
+   "name": "유류 배관 1구간 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "C5",
+   "description": "유류 배관 1구간(C5) 감시. 유류 누출·화재 징후와 비인가 접근 확인.",
+   "tags": [
+    "급유",
+    "누출",
+    "유류",
+    "중요시설",
+    "화재"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-FUEL-P2",
+   "name": "유류 배관 2구간 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "D6",
+   "description": "유류 배관 2구간(D6) 감시. 유류 누출·화재 징후와 비인가 접근 확인.",
+   "tags": [
+    "급유",
+    "누출",
+    "유류",
+    "중요시설",
+    "화재"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-FUEL-T1",
+   "name": "유류 저장탱크 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "C6",
+   "description": "유류 저장탱크(C6) 감시. 유류 누출·화재 징후와 비인가 접근 확인.",
+   "tags": [
+    "급유",
+    "누출",
+    "유류",
+    "중요시설",
+    "화재"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-AMMO-PERI",
+   "name": "탄약고 이중울타리 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "B6",
+   "description": "탄약고 이중울타리(B6) 감시. 탄약고 구역은 이중 방호 대상으로 상시 감시.",
+   "tags": [
+    "경계",
+    "방호",
+    "이중울타리",
+    "중요시설",
+    "탄약"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-AMMO-POST",
+   "name": "탄약고 전담초소 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "B6",
+   "description": "탄약고 전담초소(B6) 감시. 탄약고 구역은 이중 방호 대상으로 상시 감시.",
+   "tags": [
+    "경계",
+    "방호",
+    "이중울타리",
+    "중요시설",
+    "탄약"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-AMMO-LOAD",
+   "name": "탄약 적재장 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "B5",
+   "description": "탄약 적재장(B5) 감시. 탄약고 구역은 이중 방호 대상으로 상시 감시.",
+   "tags": [
+    "경계",
+    "방호",
+    "이중울타리",
+    "중요시설",
+    "탄약"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-AMMO-ROAD",
+   "name": "탄약 수송로 CCTV",
+   "category": "취약지점",
+   "feed_type": "CCTV",
+   "cell": "C5",
+   "description": "탄약 수송로(C5) 감시. 탄약고 구역은 이중 방호 대상으로 상시 감시.",
+   "tags": [
+    "경계",
+    "방호",
+    "이중울타리",
+    "중요시설",
+    "탄약"
+   ],
+   "priority_hint": 1
+  },
+  {
+   "id": "CCTV-INF-PWR-1",
+   "name": "주 배전반 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D6",
+   "description": "주 배전반(D6) 감시. 기지 기능 유지에 직결되는 기반시설.",
+   "tags": [
+    "기반시설",
+    "전력",
+    "중요시설",
+    "통신"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-INF-PWR-2",
+   "name": "예비 발전기 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D6",
+   "description": "예비 발전기(D6) 감시. 기지 기능 유지에 직결되는 기반시설.",
+   "tags": [
+    "기반시설",
+    "전력",
+    "중요시설",
+    "통신"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-INF-COM-1",
+   "name": "통신 중계소 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "G3",
+   "description": "통신 중계소(G3) 감시. 기지 기능 유지에 직결되는 기반시설.",
+   "tags": [
+    "기반시설",
+    "전력",
+    "중요시설",
+    "통신"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-INF-COM-2",
+   "name": "광케이블 맨홀 1번 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "E5",
+   "description": "광케이블 맨홀 1번(E5) 감시. 기지 기능 유지에 직결되는 기반시설.",
+   "tags": [
+    "기반시설",
+    "전력",
+    "중요시설",
+    "통신"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-INF-WTR",
+   "name": "급수 저수조 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "B5",
+   "description": "급수 저수조(B5) 감시. 기지 기능 유지에 직결되는 기반시설.",
+   "tags": [
+    "기반시설",
+    "전력",
+    "중요시설",
+    "통신"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-INF-HEAT",
+   "name": "열병합 설비 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "E6",
+   "description": "열병합 설비(E6) 감시. 기지 기능 유지에 직결되는 기반시설.",
+   "tags": [
+    "기반시설",
+    "전력",
+    "중요시설",
+    "통신"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-HELI-1",
+   "name": "헬기 이착륙장 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "I4",
+   "description": "헬기 이착륙장(I4) 감시.",
+   "tags": [
+    "이착륙",
+    "헬기"
+   ],
+   "priority_hint": 2
+  },
+  {
+   "id": "CCTV-HELI-2",
+   "name": "헬기 주기장 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "I5",
+   "description": "헬기 주기장(I5) 감시.",
+   "tags": [
+    "주기",
+    "헬기"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-PARK-1",
+   "name": "본부 주차장 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "F6",
+   "description": "본부 주차장(F6) 감시.",
+   "tags": [
+    "주차",
+    "차량"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-PARK-2",
+   "name": "면회 주차장 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "A5",
+   "description": "면회 주차장(A5) 감시.",
+   "tags": [
+    "외부인",
+    "주차",
+    "차량"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-RANGE",
+   "name": "소총 사격장 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "B3",
+   "description": "소총 사격장(B3) 감시.",
+   "tags": [
+    "사격장",
+    "훈련"
+   ],
+   "priority_hint": 5
+  },
+  {
+   "id": "CCTV-CBRN-D",
+   "name": "화생방 제독소 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "D6",
+   "description": "화생방 제독소(D6) 감시.",
+   "tags": [
+    "제독",
+    "화생방"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-FIRE-BAY",
+   "name": "소방차 대기고 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "C3",
+   "description": "소방차 대기고(C3) 감시.",
+   "tags": [
+    "소방",
+    "출동"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-MED-BAY",
+   "name": "구급차 대기고 CCTV",
+   "category": "시설",
+   "feed_type": "CCTV",
+   "cell": "J7",
+   "description": "구급차 대기고(J7) 감시.",
+   "tags": [
+    "응급",
+    "의무",
+    "출동"
+   ],
+   "priority_hint": 4
+  },
+  {
+   "id": "CCTV-UNIT-WING",
+   "name": "비행단 본부 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "F6",
+   "description": "비행단 본부 청사(F6) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "본부",
+    "부대",
+    "작전",
+    "지휘",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-OPS",
+   "name": "항공작전전대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "G3",
+   "description": "항공작전전대 청사(G3) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "작전",
+    "지휘",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-FS-1",
+   "name": "제101전투비행대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "D3",
+   "description": "제101전투비행대대 청사(D3) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "비행대대",
+    "조종사",
+    "청사",
+    "출격"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-FS-2",
+   "name": "제102전투비행대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "E3",
+   "description": "제102전투비행대대 청사(E3) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "비행대대",
+    "조종사",
+    "청사",
+    "출격"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-ATC",
+   "name": "운항관제대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "F3",
+   "description": "운항관제대대 청사(F3) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "관제",
+    "부대",
+    "청사",
+    "항적",
+    "활주로"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-WX",
+   "name": "기상대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "C2",
+   "description": "기상대대 청사(C2) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "관측",
+    "기상",
+    "부대",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-MX",
+   "name": "항공정비전대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "I3",
+   "description": "항공정비전대 청사(I3) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "정비",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-MX-AC",
+   "name": "항공기정비대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "I3",
+   "description": "항공기정비대대 청사(I3) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "정비",
+    "청사",
+    "항공기"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-MX-PT",
+   "name": "부품정비대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "E6",
+   "description": "부품정비대대 청사(E6) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "부품",
+    "정비",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-MX-EQ",
+   "name": "장비정비대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "G6",
+   "description": "장비정비대대 청사(G6) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "장비",
+    "정비",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-SEC",
+   "name": "기지방호전대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "A5",
+   "description": "기지방호전대 청사(A5) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "경계",
+    "방호",
+    "부대",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-MP",
+   "name": "군사경찰대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "A5",
+   "description": "군사경찰대대 청사(A5) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "경계",
+    "군사경찰",
+    "부대",
+    "청사",
+    "출입통제",
+    "침입"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-ENG",
+   "name": "공병대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "B5",
+   "description": "공병대대 청사(B5) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "공병",
+    "부대",
+    "시설",
+    "청사",
+    "피해복구"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-CBRN",
+   "name": "화생방지원대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "D6",
+   "description": "화생방지원대 청사(D6) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "제독",
+    "청사",
+    "화생방"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-AD",
+   "name": "방공포대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "G2",
+   "description": "방공포대 청사(G2) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "교전",
+    "대공",
+    "무인기",
+    "방공",
+    "부대",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-SPT",
+   "name": "작전지원전대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "F6",
+   "description": "작전지원전대 청사(F6) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "군수",
+    "부대",
+    "지원",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-SUP",
+   "name": "보급대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "E6",
+   "description": "보급대대 청사(E6) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "군수",
+    "보급",
+    "부대",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-TRN",
+   "name": "수송대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "G6",
+   "description": "수송대대 청사(G6) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "수송",
+    "차량",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-COM",
+   "name": "정보통신대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "G3",
+   "description": "정보통신대대 청사(G3) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "청사",
+    "체계",
+    "통신"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-WEL",
+   "name": "복지대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "I7",
+   "description": "복지대대 청사(I7) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "복지",
+    "부대",
+    "생활",
+    "청사"
+   ],
+   "priority_hint": 3
+  },
+  {
+   "id": "CCTV-UNIT-MED",
+   "name": "항공의무대대 청사 CCTV",
+   "category": "부대시설",
+   "feed_type": "CCTV",
+   "cell": "J7",
+   "description": "항공의무대대 청사(J7) 감시. 해당 부대 담당 분야 상황 발생 시 참조.",
+   "tags": [
+    "부대",
+    "응급",
+    "의무",
+    "청사"
+   ],
+   "priority_hint": 3
+  }
+ ]
+}

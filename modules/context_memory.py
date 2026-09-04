@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import re
-import time
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import streamlit as st
@@ -18,6 +18,13 @@ from modules import sources
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 CONTEXT_MEMORY_PATH = DATA_DIR / "context_memory.json"
 OPERATION_LOG_PATH = DATA_DIR / "operation_log.json"
+
+KST = timezone(timedelta(hours=9))
+
+
+def now_kst() -> str:
+    """서버 시간대와 무관하게 한국 시간(KST) 기준 HH:MM:SS를 반환한다."""
+    return datetime.now(KST).strftime("%H:%M:%S")
 
 
 def init_session_state() -> None:
@@ -126,7 +133,7 @@ def _auto_place_markers(event_id: str, utterance: str) -> None:
         marker = {
             "event_id": group_key, "x": pos[0], "y": pos[1],
             "emoji": preset["emoji"], "color": preset["color"], "label": preset["label"],
-            "facility": facility, "timestamp": time.strftime("%H:%M:%S"),
+            "facility": facility, "timestamp": now_kst(),
         }
         existing = next(
             (m for m in markers

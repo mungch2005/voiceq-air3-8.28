@@ -1,0 +1,96 @@
+{
+  "note": "상황 유형별 COP 화면 구성 플레이북. 운용 경험이 있는 사람이 직접 작성한 정답 레이아웃이며, AI는 이 순서를 따른다. 앱의 'COP 플레이북' 탭에서 수정할 수 있다. '비행단 전장상황도'는 상황과 무관하게 항상 1순위로 고정 표시되므로 screens 목록에 넣지 않는다.",
+  "slot_types": {
+    "fixed": "고정 화면 하나를 그대로 배치",
+    "nearest_cctv": "발언에 언급된 방위·시설명과 태그가 가장 많이 겹치는 CCTV를 자동 선택",
+    "prefix": "지정한 접두어로 시작하는 소스 중 발언 내용과 가장 관련 있는 것을 선택",
+    "group": "여러 소스를 우선순위대로 시도"
+  },
+  "slot_types_note": "nearest_cctv/prefix/group 슬롯에 \"max\"를 주면(기본값 1) 관련도 높은 순으로 그 개수까지 여러 타일에 나눠 띄운다. 정말 관련 있는 후보가 그만큼 없으면 억지로 채우지 않고 있는 만큼만 띄운다.",
+  "max_panels": 6,
+  "max_panels_note": "한 번에 띄울 화면 수의 상한(1~12). 12칸을 전부 다른 화면으로 채우면 대부분이 한 칸짜리가 되어 중요도에 따라 크기를 다르게 준다는 전제가 사라진다. 상황별 화면이 이 수를 넘으면 운용자가 명시한 것이므로 자르지 않고, 상시 표출 화면 보충만 여기서 멈춘다.",
+  "pinned_slot": "비행단 전장상황도",
+  "slots": {
+    "비행단 전장상황도": { "type": "fixed", "source_id": "SYS-BASEMAP" },
+    "전구 전장상황도": { "type": "fixed", "source_id": "SYS-THEATER" },
+    "대공상황감시체계": { "type": "fixed", "source_id": "SYS-AD-WATCH" },
+    "SSR화면": { "type": "fixed", "source_id": "RDR-SSR" },
+    "C4I 비행스케쥴": { "type": "fixed", "source_id": "ACFT-SCHED" },
+    "작전상황판": { "type": "fixed", "source_id": "SYS-SITBOARD" },
+    "대공방어 자산 현황": { "type": "fixed", "source_id": "SYS-ADS" },
+    "화생방 탐지 현황": { "type": "fixed", "source_id": "SYS-CBRN" },
+    "기상 관측 화면": { "type": "fixed", "source_id": "MET-OBS" },
+    "드론탐지체계": { "type": "fixed", "source_id": "UAS-DET" },
+    "무인기 추적 항적도": { "type": "fixed", "source_id": "UAS-TRACK" },
+    "TOD화면": { "type": "prefix", "prefix": "TOD-" },
+    "해당 지역 cctv": { "type": "nearest_cctv", "max": 3 },
+    "낙탄 지역 cctv": { "type": "nearest_cctv", "max": 3 },
+    "활주로 및 유도로 cctv": { "type": "group", "prefixes": ["CCTV-RWY-", "CCTV-TWY-"], "max": 2 },
+    "초병 바디캠": { "type": "prefix", "prefix": "CAM-GP-" },
+    "순찰차 카메라": { "type": "prefix", "prefix": "CAM-PTL-" }
+  },
+  "always_on": [
+    "작전상황판",
+    "대공방어 자산 현황",
+    "기상 관측 화면",
+    "드론탐지체계"
+  ],
+  "always_on_note": "비행단 전장상황도를 고정 배치하고, 상황별 화면을 배치한 뒤 화면 수가 max_panels에 못 미치면 이 순서대로 보충한다. 남는 자리는 상위 화면을 키워서 메우므로 Video Wall에 빈 화면은 생기지 않는다.",
+  "situations": [
+    {
+      "name": "드론상황",
+      "keywords": ["드론", "무인기", "UAV", "쿼드콥터"],
+      "screens": ["TOD화면", "SSR화면", "C4I 비행스케쥴"]
+    },
+    {
+      "name": "적 항공기 접근 상황",
+      "keywords": ["적기", "적 항공기", "미상항적", "미식별 항적", "영공"],
+      "screens": ["대공상황감시체계", "전구 전장상황도", "활주로 및 유도로 cctv", "C4I 비행스케쥴"]
+    },
+    {
+      "name": "적 미사일 접근 상황",
+      "keywords": ["미사일", "탄도", "순항", "요격"],
+      "screens": ["대공상황감시체계", "활주로 및 유도로 cctv", "전구 전장상황도"]
+    },
+    {
+      "name": "적 미사일 낙탄 상황",
+      "keywords": ["낙탄", "피탄", "탄착", "폭발"],
+      "screens": ["낙탄 지역 cctv", "대공상황감시체계", "C4I 비행스케쥴"]
+    },
+    {
+      "name": "화생방 오염 상황",
+      "keywords": ["화생방", "오염", "제독", "가스", "방독면"],
+      "screens": ["해당 지역 cctv", "C4I 비행스케쥴"]
+    },
+    {
+      "name": "활주로 피해 상황",
+      "keywords": ["활주로 피해", "활주로 복구", "포장 파손", "불발탄", "FOD"],
+      "screens": ["해당 지역 cctv"]
+    },
+    {
+      "name": "미상인원 기지침투",
+      "keywords": ["침투", "침입", "미상인원", "월담", "무단출입"],
+      "screens": ["해당 지역 cctv"]
+    },
+    {
+      "name": "기지 밖에서 미상인원 사진촬영 상황",
+      "keywords": ["사진촬영", "촬영", "정찰", "기지 밖", "외부인"],
+      "screens": ["해당 지역 cctv"]
+    },
+    {
+      "name": "통신장애상황",
+      "keywords": ["통신장애", "통신두절", "망 장애", "회선", "지통"],
+      "screens": ["해당 지역 cctv"]
+    },
+    {
+      "name": "식중독상황",
+      "keywords": ["식중독", "급식", "환자", "구토", "설사"],
+      "screens": ["해당 지역 cctv"]
+    },
+    {
+      "name": "기타 상황",
+      "keywords": [],
+      "screens": ["해당 지역 cctv", "작전상황판"]
+    }
+  ]
+}

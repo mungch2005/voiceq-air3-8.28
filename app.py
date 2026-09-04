@@ -5,7 +5,6 @@
 
 import csv
 import io
-import time
 
 import streamlit as st
 from streamlit_image_coordinates import streamlit_image_coordinates
@@ -17,7 +16,6 @@ from modules import map_renderer as mr
 from modules import organization as org
 from modules import playbook as pb
 from modules import prompts
-from modules import sources
 from modules import stt
 from modules import llm_engine as engine
 
@@ -117,7 +115,7 @@ def run_utterance(speaker: str, utterance: str) -> None:
         extra_body=extra_body,
     )
 
-    timestamp = time.strftime("%H:%M:%S")
+    timestamp = cm.now_kst()
     if result.fast:
         cm.apply_fast_result(result.fast.data, utterance)
         st.session_state.display_latency_history.append(result.display_latency)
@@ -329,8 +327,8 @@ with st.sidebar:
 # ---------- 메인 화면 ----------
 st.title("전투지휘소 상황판 — VOICE-CUE")
 
-tab_wall, tab_book, tab_log, tab_memory, tab_map_ops = st.tabs(
-    ["COP 화면 구성", "COP 플레이북", "작전상황일지", "Context Memory / 발언 이력", "전장상황도 조작"]
+tab_wall, tab_log, tab_memory, tab_map_ops = st.tabs(
+    ["COP 화면 구성", "작전상황일지", "Context Memory / 발언 이력", "전장상황도 조작"]
 )
 
 with tab_wall:
@@ -342,7 +340,7 @@ with tab_wall:
         if st.session_state.situation_unmatched:
             st.warning(
                 f"모델이 낸 유형 '{st.session_state.situation_unmatched}' 은 플레이북에 없어 "
-                "'기타 상황'으로 처리했습니다. 필요하면 플레이북 탭에서 추가하세요."
+                "'기타 상황'으로 처리했습니다. 필요하면 data/cop_playbook.json 에 추가하세요."
             )
 
     lr.render_cop_wall(
@@ -357,71 +355,6 @@ with tab_wall:
 
     if st.session_state.dropped_sources:
         st.warning("해석하지 못한 플레이북 슬롯: " + ", ".join(st.session_state.dropped_sources))
-
-with tab_book:
-    st.subheader("COP 플레이북")
-    st.caption(
-        "상황 유형별로 어떤 화면을 어느 순서로 띄울지 정의합니다. AI는 상황 유형만 분류하고, "
-        "화면 배치는 이 표를 그대로 따릅니다. 표를 고치면 즉시 반영됩니다."
-    )
-
-    slot_names = list(pb.load_playbook()["slots"])
-    with st.expander(f"사용 가능한 화면 슬롯 {len(slot_names)}개 — 아래 이름을 그대로 입력하세요"):
-        for name in slot_names:
-            spec = pb.load_playbook()["slots"][name]
-            kind = spec.get("type")
-            if kind == "fixed":
-                desc = sources.name_of(spec.get("source_id", ""))
-            elif kind == "nearest_cctv":
-                desc = "발언에 언급된 방위·시설명과 가장 관련 있는 CCTV를 자동 선택"
-            elif kind == "prefix":
-                desc = f"{spec.get('prefix')}* 중 발언 내용과 가장 관련 있는 것"
-            else:
-                desc = "지정 그룹 중 발언 내용과 가장 관련 있는 것"
-            max_n = int(spec.get("max", 1) or 1)
-            if kind != "fixed" and max_n > 1:
-                desc += f" — 관련도 높은 순으로 최대 {max_n}개까지 (관련 있는 만큼만)"
-            st.caption(f"• **{name}** — {desc}")
-
-    edited = st.data_editor(
-        pb.to_table(),
-        num_rows="dynamic",
-        use_container_width=True,
-        key="playbook_editor",
-        column_config={
-            "상황 유형": st.column_config.TextColumn(width="medium"),
-            "키워드": st.column_config.TextColumn(help="쉼표로 구분. 상황 분류의 단서로 쓰입니다."),
-        },
-    )
-
-    problems = pb.validate_table(edited)
-    if problems:
-        st.error("저장 전 확인이 필요합니다:\n\n" + "\n".join(f"- {x}" for x in problems))
-
-    c1, c2 = st.columns([1, 4])
-    if c1.button("저장", type="primary", disabled=bool(problems)):
-        pb.save_playbook(pb.from_table(edited))
-        st.success("플레이북을 저장했습니다. 다음 발언부터 적용됩니다.")
-    c2.caption("저장하면 data/cop_playbook.json 에 기록됩니다.")
-
-    st.divider()
-    st.markdown(
-        "**미리보기** — 상황 유형과 예시 발언을 넣으면 실제 배치 결과를 확인할 수 있습니다."
-    )
-    pc1, pc2 = st.columns(2)
-    preview_situation = pc1.selectbox("상황 유형", pb.situation_names())
-    preview_utterance = pc2.text_input(
-        "예시 발언 (선택)",
-        placeholder="예: 북서방 상공에 무인기 식별",
-        help="비워두면 각 슬롯의 첫 번째 후보가 선택됩니다. 방위·시설명을 넣으면 "
-        "그 발언과 가장 관련 있는 CCTV가 어떻게 선택되는지 볼 수 있습니다.",
-    )
-    preview_layout, preview_un = pb.build_layout(preview_situation, preview_utterance.strip())
-    for it in preview_layout:
-        st.caption(f"{it['priority']}. **{it['position']}** — {it['name']} `{it['source_id']}`"
-                   f"  ← 슬롯: {it['slot']}")
-    if preview_un:
-        st.warning("해석 실패: " + ", ".join(preview_un))
 
 with tab_log:
     lr.render_operation_log(st.session_state.operation_log)

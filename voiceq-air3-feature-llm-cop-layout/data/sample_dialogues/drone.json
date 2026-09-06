@@ -1,0 +1,42 @@
+{
+ "name": "드론상황 — 유도로 상공 소형 드론",
+ "source": "train-094",
+ "note": "finetune 데이터셋에서 뽑은 대본이다. audio는 data/sample_dialogues/audio/ 아래의 녹음 파일이며, 없으면 자막만 나온다.",
+ "turns": [
+  {
+   "speaker": "항공작전전대장",
+   "utterance": "유도로 상공에서 소형 드론 1대가 정지비행 중입니다. 촬영 정황이 있습니다.",
+   "audio": "drone-1.m4a"
+  },
+  {
+   "speaker": "기상대대장",
+   "utterance": "현재 시정 1.5킬로미터로 광학 감시가 제한됩니다. 레이더 위주로 추적하십시오.",
+   "audio": "drone-2.m4a"
+  },
+  {
+   "speaker": "대공방어대장",
+   "utterance": "소형 드론 1대 격추를 확인했습니다. 잔해 수거 중이며 나머지 1대는 기지 밖으로 이탈했습니다.",
+   "audio": "drone-3.m4a"
+  },
+  {
+   "speaker": "부단장",
+   "utterance": "야간에는 TOD 화면을 해당 지역 CCTV보다 앞에 배치하십시오.",
+   "audio": "drone-4.m4a"
+  },
+  {
+   "speaker": "군사경찰대대장",
+   "utterance": "북측 초소 경계를 강화하고 초병 바디캠을 연결하겠습니다.",
+   "audio": "drone-5.m4a"
+  },
+  {
+   "speaker": "작전지원전대장",
+   "utterance": "아까 그 보고 다시 한번 말씀해 주시겠습니까?",
+   "audio": "drone-6.m4a"
+  },
+  {
+   "speaker": "대공방어대장",
+   "utterance": "북측 대공포 사격대기 완료했습니다. 휴대용 대공유도탄 1조도 전개했습니다.",
+   "audio": "drone-7.m4a"
+  }
+ ]
+}

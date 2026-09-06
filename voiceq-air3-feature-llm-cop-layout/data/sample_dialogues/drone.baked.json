@@ -1,0 +1,189 @@
+{
+ "note": "데이터셋의 정답 판단(fast_target / full_target)을 그대로 옮긴 것이다. 모델을 실제로 호출해 구운 것이 아니므로 display_latency는 없다 — 실측 지연이 필요하면 시연 페이지의 '시나리오 굽기'로 다시 구우면 된다.",
+ "model": "정답 판단 (train-094)",
+ "baked_at": "",
+ "turns": [
+  {
+   "speaker": "항공작전전대장",
+   "utterance": "유도로 상공에서 소형 드론 1대가 정지비행 중입니다. 촬영 정황이 있습니다.",
+   "fast": {
+    "situation": {
+     "type": "드론상황",
+     "reason": "유도로 상공 소형 드론 정지비행"
+    }
+   },
+   "full": {
+    "context_memory": "유도로 상공 소형 드론 1대 체공.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "유도로 상공 소형 드론 정지비행",
+      "urgency": "긴급"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "상황",
+     "event_id": "사태1",
+     "content": "유도로 상공에서 소형 드론 1대 정지비행, 촬영 정황 확인."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "기상대대장",
+   "utterance": "현재 시정 1.5킬로미터로 광학 감시가 제한됩니다. 레이더 위주로 추적하십시오.",
+   "fast": {
+    "situation": {
+     "type": "드론상황",
+     "reason": "저시정으로 광학 감시 제한"
+    }
+   },
+   "full": {
+    "context_memory": "유도로 상공 소형 드론 1대 체공. 시정 1.5km 광학감시 제한.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "저시정으로 광학 감시 제한",
+      "urgency": "긴급"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "시정 1.5km로 광학 감시 제한, 레이더 위주 추적 건의."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "대공방어대장",
+   "utterance": "소형 드론 1대 격추를 확인했습니다. 잔해 수거 중이며 나머지 1대는 기지 밖으로 이탈했습니다.",
+   "fast": {
+    "situation": {
+     "type": "드론상황",
+     "reason": "소형 드론 1대 격추, 1대 이탈"
+    }
+   },
+   "full": {
+    "context_memory": "유도로 상공 소형 드론 1대 체공. 시정 1.5km 광학감시 제한. 소형 드론 1대 격추·1대 이탈.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "소형 드론 1대 격추, 1대 이탈",
+      "urgency": "관찰"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "소형 드론 1대 격추 확인 및 잔해 수거, 잔여 1대 기지 외곽 이탈."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "부단장",
+   "utterance": "야간에는 TOD 화면을 해당 지역 CCTV보다 앞에 배치하십시오.",
+   "fast": {
+    "situation": {
+     "type": "유지",
+     "reason": "화면 배치에 대한 지시일 뿐 새로운 사태가 아니므로 상황 유형을 유지"
+    }
+   },
+   "full": {
+    "context_memory": "시정 1.5km 광학감시 제한. 소형 드론 1대 격추·1대 이탈. 야간 TOD 우선.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "야간 TOD 우선 배치 지시",
+      "urgency": "관찰"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "야간 TOD 화면 우선 배치 지시."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "군사경찰대대장",
+   "utterance": "북측 초소 경계를 강화하고 초병 바디캠을 연결하겠습니다.",
+   "fast": {
+    "situation": {
+     "type": "드론상황",
+     "reason": "북측 지상 경계 강화"
+    }
+   },
+   "full": {
+    "context_memory": "소형 드론 1대 격추·1대 이탈. 야간 TOD 우선. 북측 초소 경계강화.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "북측 지상 경계 강화",
+      "urgency": "관찰"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "북측 초소 경계 강화, 초병 바디캠 연결."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "작전지원전대장",
+   "utterance": "아까 그 보고 다시 한번 말씀해 주시겠습니까?",
+   "fast": {
+    "situation": {
+     "type": "유지",
+     "reason": "상황 판단·조치와 무관한 발언이므로 진행 중인 상황 유형을 유지"
+    }
+   },
+   "full": {
+    "context_memory": "소형 드론 1대 격추·1대 이탈. 야간 TOD 우선. 북측 초소 경계강화.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "북측 지상 경계 강화",
+      "urgency": "관찰"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "무시",
+     "event_id": "",
+     "content": ""
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "대공방어대장",
+   "utterance": "북측 대공포 사격대기 완료했습니다. 휴대용 대공유도탄 1조도 전개했습니다.",
+   "fast": {
+    "situation": {
+     "type": "드론상황",
+     "reason": "소형 드론 대응 대공자산 전개 완료"
+    }
+   },
+   "full": {
+    "context_memory": "야간 TOD 우선. 북측 초소 경계강화. 북측 대공자산 사격대기.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "소형 드론 대응 대공자산 전개 완료",
+      "urgency": "관찰"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "북측 대공포 사격대기 완료, 휴대용 대공유도탄 1조 전개."
+    }
+   },
+   "display_latency": null
+  }
+ ]
+}

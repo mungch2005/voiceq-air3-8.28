@@ -1,0 +1,42 @@
+{
+ "name": "미상인원 기지침투 — 남측초소 식별",
+ "source": "valid-019",
+ "note": "finetune 데이터셋에서 뽑은 대본이다. audio는 data/sample_dialogues/audio/ 아래의 녹음 파일이며, 없으면 자막만 나온다.",
+ "turns": [
+  {
+   "speaker": "항공작전상황담당",
+   "utterance": "남측초소 초병이 미상인원 2명을 육안으로 식별했습니다. 추적 중입니다.",
+   "audio": "intrusion-1.m4a"
+  },
+  {
+   "speaker": "기타 지휘관",
+   "utterance": "오늘 훈련 종료 시간이 몇 시였죠?",
+   "audio": "intrusion-2.m4a"
+  },
+  {
+   "speaker": "부단장",
+   "utterance": "작전상황판은 우측에 계속 유지하고 나머지 화면만 교체하십시오.",
+   "audio": "intrusion-3.m4a"
+  },
+  {
+   "speaker": "군사경찰대대장",
+   "utterance": "미상인원 2명을 검거했습니다. 신원을 확인 중입니다.",
+   "audio": "intrusion-4.m4a"
+  },
+  {
+   "speaker": "기지방호전대장",
+   "utterance": "탄약고 경계도 강화하십시오. 양동 가능성을 배제하지 마십시오.",
+   "audio": "intrusion-5.m4a"
+  },
+  {
+   "speaker": "운항관제대대장",
+   "utterance": "드론 상황에서는 SSR 화면을 빼지 마십시오.",
+   "audio": "intrusion-6.m4a"
+  },
+  {
+   "speaker": "군사경찰대대장",
+   "utterance": "검거 인원은 인근 주민으로 확인되었습니다. 고의성은 없어 보입니다.",
+   "audio": "intrusion-7.m4a"
+  }
+ ]
+}

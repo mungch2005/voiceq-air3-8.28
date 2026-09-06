@@ -1,0 +1,189 @@
+{
+ "note": "데이터셋의 정답 판단(fast_target / full_target)을 그대로 옮긴 것이다. 모델을 실제로 호출해 구운 것이 아니므로 display_latency는 없다 — 실측 지연이 필요하면 시연 페이지의 '시나리오 굽기'로 다시 구우면 된다.",
+ "model": "정답 판단 (valid-019)",
+ "baked_at": "",
+ "turns": [
+  {
+   "speaker": "항공작전상황담당",
+   "utterance": "남측초소 초병이 미상인원 2명을 육안으로 식별했습니다. 추적 중입니다.",
+   "fast": {
+    "situation": {
+     "type": "미상인원 기지침투",
+     "reason": "남측 미상인원 2명 추적"
+    }
+   },
+   "full": {
+    "context_memory": "남측 미상인원 추적 중.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "남측 미상인원 2명 추적",
+      "urgency": "긴급"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "상황",
+     "event_id": "사태1",
+     "content": "남측초소 초병이 미상인원 2명 육안 식별, 추적 중."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "기타 지휘관",
+   "utterance": "오늘 훈련 종료 시간이 몇 시였죠?",
+   "fast": {
+    "situation": {
+     "type": "유지",
+     "reason": "상황 판단·조치와 무관한 발언이므로 진행 중인 상황 유형을 유지"
+    }
+   },
+   "full": {
+    "context_memory": "남측 미상인원 추적 중.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "남측 미상인원 2명 추적",
+      "urgency": "긴급"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "무시",
+     "event_id": "",
+     "content": ""
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "부단장",
+   "utterance": "작전상황판은 우측에 계속 유지하고 나머지 화면만 교체하십시오.",
+   "fast": {
+    "situation": {
+     "type": "유지",
+     "reason": "화면 배치에 대한 지시일 뿐 새로운 사태가 아니므로 상황 유형을 유지"
+    }
+   },
+   "full": {
+    "context_memory": "남측 미상인원 추적 중. 작전상황판 상시 유지.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "작전상황판 상시 유지 지시",
+      "urgency": "긴급"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "작전상황판 상시 유지 및 나머지 화면만 교체 지시."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "군사경찰대대장",
+   "utterance": "미상인원 2명을 검거했습니다. 신원을 확인 중입니다.",
+   "fast": {
+    "situation": {
+     "type": "미상인원 기지침투",
+     "reason": "미상인원 2명 검거"
+    }
+   },
+   "full": {
+    "context_memory": "남측 미상인원 추적 중. 작전상황판 상시 유지. 미상인원 2명 검거.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "미상인원 2명 검거",
+      "urgency": "긴급"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "미상인원 2명 검거, 신원 확인 중."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "기지방호전대장",
+   "utterance": "탄약고 경계도 강화하십시오. 양동 가능성을 배제하지 마십시오.",
+   "fast": {
+    "situation": {
+     "type": "미상인원 기지침투",
+     "reason": "탄약고 경계 강화"
+    }
+   },
+   "full": {
+    "context_memory": "작전상황판 상시 유지. 미상인원 2명 검거. 탄약고 경계강화.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "탄약고 경계 강화",
+      "urgency": "긴급"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "탄약고 경계 강화 지시, 양동 가능성 대비."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "운항관제대대장",
+   "utterance": "드론 상황에서는 SSR 화면을 빼지 마십시오.",
+   "fast": {
+    "situation": {
+     "type": "유지",
+     "reason": "화면 배치에 대한 지시일 뿐 새로운 사태가 아니므로 상황 유형을 유지"
+    }
+   },
+   "full": {
+    "context_memory": "미상인원 2명 검거. 탄약고 경계강화. 드론상황 SSR 유지.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "SSR 화면 유지 지시",
+      "urgency": "긴급"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "드론 상황 시 SSR 화면 유지 지시."
+    }
+   },
+   "display_latency": null
+  },
+  {
+   "speaker": "군사경찰대대장",
+   "utterance": "검거 인원은 인근 주민으로 확인되었습니다. 고의성은 없어 보입니다.",
+   "fast": {
+    "situation": {
+     "type": "미상인원 기지침투",
+     "reason": "침입자 인근 주민 확인"
+    }
+   },
+   "full": {
+    "context_memory": "탄약고 경계강화. 드론상황 SSR 유지. 인근 주민으로 확인.",
+    "situation_board": [
+     {
+      "rank": 1,
+      "event": "침입자 인근 주민 확인",
+      "urgency": "관찰"
+     }
+    ],
+    "operation_log_entry": {
+     "kind": "조치",
+     "event_id": "사태1",
+     "content": "검거 인원 인근 주민으로 확인, 고의성 없음."
+    }
+   },
+   "display_latency": null
+  }
+ ]
+}

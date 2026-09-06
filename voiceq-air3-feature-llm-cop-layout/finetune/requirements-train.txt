@@ -1,0 +1,22 @@
+# 학습 전용 의존성. 앱 실행(requirements.txt)에는 필요 없다 —
+# Streamlit Cloud에 이걸 올리면 빌드가 실패하거나 무료 리소스를 초과한다.
+#
+# 설치 대상은 GPU가 있는 학습 환경(Colab T4 이상 또는 부대 내 GPU 서버)이다.
+#   pip install -r finetune/requirements-train.txt
+
+torch>=2.4
+# TRL·PEFT가 아직 transformers 4.x 계열을 기준으로 동작한다. 5.x에서는
+# SFTTrainer 인자 이름이 어긋나므로 상한을 둔다.
+transformers>=4.51,<5
+peft>=0.14
+# completion_only_loss(assistant 구간에만 손실)는 trl 0.19부터다.
+# 더 낮은 버전을 쓰면 SFTConfig의 max_length를 max_seq_length로 바꿔야 한다.
+trl>=0.19
+bitsandbytes>=0.45
+datasets>=3.0
+accelerate>=1.0
+
+# evaluate.py의 openai 백엔드(vLLM/Ollama/OpenRouter 호출)에만 필요.
+# BLEU/ROUGE는 외부 패키지 없이 evaluate.py 안에 직접 구현돼 있다 —
+# 폐쇄망 학습 서버에서 추가 패키지 없이 평가가 돌아가야 하기 때문이다.
+openai>=1.40

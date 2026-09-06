@@ -206,16 +206,34 @@ def normalize_event_id(raw: object) -> str:
 # 백엔드
 # ---------------------------------------------------------------------
 
+
+def fast_prompt(layout: bool) -> tuple[str, list[dict]]:
+    """FAST 경로의 (시스템 프롬프트, few-shot 예시).
+
+    layout=True는 --layout-target으로 학습한 모델용이다. 학습 때와 평가 때 프롬프트가
+    다르면 파인튜닝 효과가 그대로 사라지므로, 데이터 생성(gen_dataset.to_sft)과 같은
+    상수를 쓴다.
+    """
+    if layout:
+        return prompts.FAST_LAYOUT_SYSTEM_PROMPT, prompts.FAST_LAYOUT_FEW_SHOT_MESSAGES
+    return prompts.FAST_SYSTEM_PROMPT, prompts.FAST_FEW_SHOT_MESSAGES
+
+
 class GoldBackend:
     """정답을 그대로 돌려준다. 지표 계산식 자체가 맞는지 검증하는 용도."""
 
     name = "gold"
 
-    def __init__(self, **_: object) -> None:
-        pass
+    def __init__(self, layout: bool = False, **_: object) -> None:
+        self.layout = layout
 
     def generate(self, turn: dict, route: str) -> tuple[str, float]:
-        target = turn["fast_target"] if route == "fast" else turn["full_target"]
+        if route == "fast":
+            target = dict(turn["fast_target"])
+            if self.layout:
+                target["cop_layout"] = list(turn["cop_reference"]["source_ids"])
+        else:
+            target = turn["full_target"]
         return json.dumps(target, ensure_ascii=False), 0.0
 
 
@@ -224,16 +242,24 @@ class PerturbBackend(GoldBackend):
 
     name = "perturb"
 
-    def __init__(self, noise: float = 0.3, seed: int = 0, **_: object) -> None:
+    def __init__(self, noise: float = 0.3, seed: int = 0, layout: bool = False,
+                 **_: object) -> None:
         self.noise = noise
         self.rng = random.Random(seed)
         self.situations = pb.situation_names()
+        self.layout = layout
 
     def generate(self, turn: dict, route: str) -> tuple[str, float]:
         if route == "fast":
             data = json.loads(json.dumps(turn["fast_target"], ensure_ascii=False))
+            if self.layout:
+                data["cop_layout"] = list(turn["cop_reference"]["source_ids"])
             if self.rng.random() < self.noise:
                 data["situation"]["type"] = self.rng.choice(self.situations)
+                if self.layout:
+                    # 자리를 섞는다 — 지표②가 "무엇을 띄웠나"만이 아니라 "어느 자리에
+                    # 띄웠나"까지 실제로 채점하는지 확인하기 위한 오류다.
+                    self.rng.shuffle(data["cop_layout"])
             return json.dumps(data, ensure_ascii=False), 0.0
 
         data = json.loads(json.dumps(turn["full_target"], ensure_ascii=False))
@@ -255,17 +281,20 @@ class OpenAIBackend:
     name = "openai"
 
     def __init__(self, base_url: str, model: str, api_key: str | None,
-                 few_shot: bool = False, max_tokens: int = 700, **_: object) -> None:
+                 few_shot: bool = False, max_tokens: int = 700, layout: bool = False,
+                 **_: object) -> None:
         import openai
         self.client = openai.OpenAI(base_url=base_url, api_key=api_key or "not-needed")
         self.model = model
         self.few_shot = few_shot
         self.max_tokens = max_tokens
+        self.layout = layout
 
     def generate(self, turn: dict, route: str) -> tuple[str, float]:
         if route == "fast":
-            system, user = prompts.FAST_SYSTEM_PROMPT, turn["fast_user"]
-            shots = prompts.FAST_FEW_SHOT_MESSAGES if self.few_shot else []
+            system, all_shots = fast_prompt(self.layout)
+            user = turn["fast_user"]
+            shots = all_shots if self.few_shot else []
         else:
             system, user = prompts.FULL_SYSTEM_PROMPT, turn["full_user"]
             shots = prompts.FULL_FEW_SHOT_MESSAGES if self.few_shot else []
@@ -286,7 +315,8 @@ class HFBackend:
     name = "hf"
 
     def __init__(self, model: str, adapter: str | None = None,
-                 few_shot: bool = False, max_tokens: int = 700, **_: object) -> None:
+                 few_shot: bool = False, max_tokens: int = 700, layout: bool = False,
+                 **_: object) -> None:
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -343,11 +373,13 @@ class HFBackend:
         self.model.eval()
         self.few_shot = few_shot
         self.max_tokens = max_tokens
+        self.layout = layout
 
     def generate(self, turn: dict, route: str) -> tuple[str, float]:
         if route == "fast":
-            system, user = prompts.FAST_SYSTEM_PROMPT, turn["fast_user"]
-            shots = prompts.FAST_FEW_SHOT_MESSAGES if self.few_shot else []
+            system, all_shots = fast_prompt(self.layout)
+            user = turn["fast_user"]
+            shots = all_shots if self.few_shot else []
         else:
             system, user = prompts.FULL_SYSTEM_PROMPT, turn["full_user"]
             shots = prompts.FULL_FEW_SHOT_MESSAGES if self.few_shot else []
@@ -373,6 +405,11 @@ class HFBackend:
 # 채점
 # ---------------------------------------------------------------------
 
+# 런타임(context_memory.MAX_ACTIVE_SITUATIONS)과 같은 값이어야 한다. 저 모듈은
+# streamlit에 의존해 학습·평가 환경에서 import할 수 없어 값만 맞춰 둔다.
+cm_max_active = 2
+
+
 def evaluate(turns: list[dict], backend: object, limit: int | None = None) -> dict:
     if limit:
         turns = turns[:limit]
@@ -386,13 +423,20 @@ def evaluate(turns: list[dict], backend: object, limit: int | None = None) -> di
     omissions = board_rank1_correct = 0
     full_latencies: list[float] = []
     confusion: Counter = Counter()
+    # 모델이 화면 배치를 직접 낸 경우에만 채워진다(--layout-target 학습 모델).
+    layout_turns = invalid_source_ids = panel_count_wrong = 0
 
     for turn in turns:
         # ---------- FAST (표출 경로) ----------
+        predicted_layout = None
         try:
             raw, latency = backend.generate(turn, "fast")
             data = extract_json(raw, ("situation",))
             predicted = str((data.get("situation") or {}).get("type", "")).strip()
+            # --layout-target으로 학습한 모델은 화면 구성까지 낸다. 안 낸 모델(기본
+            # 학습)이면 None으로 두고 아래에서 평소대로 플레이북으로 파생시킨다.
+            if isinstance(data.get("cop_layout"), list):
+                predicted_layout = data["cop_layout"]
             fast_json_ok += 1
             fast_latencies.append(latency)
         except Exception:
@@ -401,19 +445,56 @@ def evaluate(turns: list[dict], backend: object, limit: int | None = None) -> di
         gold_type = turn["fast_target"]["situation"]["type"]
         # 런타임(context_memory.apply_fast_result)과 같은 관대한 매칭을 적용한다.
         matched = pb.find_situation(predicted)
-        resolved = matched["name"] if matched else "기타 상황"
+        if predicted == pb.KEEP_SITUATION:
+            resolved = pb.KEEP_SITUATION
+        else:
+            resolved = matched["name"] if matched else "기타 상황"
         if resolved == gold_type:
             fast_correct += 1
         else:
             confusion[f"{gold_type} → {resolved}"] += 1
 
-        # 지표② — 예측 유형으로 실제 레이아웃을 만들어 전문가 정답과 비교한다.
-        layout, _ = pb.build_layout(resolved, turn["utterance"])
-        pred_ids = [item["source_id"] for item in layout]
-        gold_ids = turn["cop_reference"]["source_ids"]
-        if pred_ids == gold_ids:
+        # 지표② — 화면 배치를 전문가 정답 레이아웃과 비교한다.
+        #
+        # "유지"는 화면을 그대로 두라는 뜻이라 평가도 그 결과로 채점한다. 이 하네스는
+        # 턴을 독립적으로 보므로 직전 화면을 재현할 수 없지만, 결과는 명확하다 —
+        # 정답도 "유지"면 화면이 정답 그대로 남으므로 만점이고, 한쪽만 "유지"면
+        # 바꿔야 할 때 안 바꿨거나(또는 그 반대) 화면이 어긋나므로 0점이다.
+        gold_keep = gold_type == pb.KEEP_SITUATION
+        pred_keep = resolved == pb.KEEP_SITUATION
+        if gold_keep and pred_keep:
+            # 화면을 안 바꾸는 것이 정답이고 실제로 안 바꿨다 — 화면은 정답 그대로다.
             cop_exact += 1
-        cop_overlap_sum += _cell_agreement(turn["cop_reference"]["panels"], layout)
+            cop_overlap_sum += 1.0
+        elif gold_keep or pred_keep:
+            # 한쪽만 "유지" — 바꿔야 할 때 안 바꿨거나 그대로 둬야 할 때 바꿨다.
+            # 어느 쪽이든 화면이 정답과 어긋나므로 0점이다(카운터를 올리지 않는다).
+            pass
+        else:
+            # 모델이 배치를 직접 냈으면 그걸 채점하고(원안 구조), 안 냈으면 예측한
+            # 상황 유형으로 플레이북 레이아웃을 만들어 채점한다(현행 구조).
+            if predicted_layout is not None:
+                layout, invalid_ids = pb.layout_from_source_ids(predicted_layout)
+                layout_turns += 1
+                invalid_source_ids += len(invalid_ids)
+                if len(layout) != len(turn["cop_reference"]["source_ids"]):
+                    panel_count_wrong += 1
+            else:
+                # 런타임과 같은 규칙으로 만든다. 모델이 내는 것은 "이번 발언의 상황
+                # 유형" 하나뿐이고, 같이 진행 중인 다른 사태는 앱이 세션 상태로
+                # 들고 있다(context_memory.active_situations). 이 하네스는 턴을
+                # 독립적으로 보므로 그 상태를 데이터에서 가져온다 — 예측한 유형을
+                # 맨 앞에 놓고 나머지 활성 상황을 뒤에 붙인다.
+                prior = turn["cop_reference"].get("active_situations") or []
+                actives = [resolved] + [a for a in prior if a != resolved]
+                layout, _ = pb.build_layout_multi(
+                    actives[:cm_max_active], turn["utterance"]
+                )
+            pred_ids = [item["source_id"] for item in layout]
+            gold_ids = turn["cop_reference"]["source_ids"]
+            if pred_ids == gold_ids:
+                cop_exact += 1
+            cop_overlap_sum += _cell_agreement(turn["cop_reference"]["panels"], layout)
 
         # ---------- FULL (기록 경로) ----------
         try:
@@ -478,6 +559,14 @@ def evaluate(turns: list[dict], backend: object, limit: int | None = None) -> di
             "cop_cell_match_pct": round(100 * cop_overlap_sum / n, 2) if n else 0.0,
             "situation_accuracy_pct": pct(fast_correct),
             "목표": "90% 이상",
+            # 아래 셋은 모델이 배치를 직접 낸 턴에서만 의미가 있다. 배치를 안 내는
+            # 기본 학습 모델이면 layout_turns가 0이고 나머지도 0이다.
+            "layout_turns": layout_turns,
+            # 카탈로그에 없는 화면 이름을 지어낸 횟수. 이 방식을 실제로 쓸 수 있는지
+            # 가르는 수치다 — 0이 아니면 서빙 시 검증·폴백 계층이 반드시 필요하다.
+            "invalid_source_id_count": invalid_source_ids,
+            # 6개가 아닌 개수를 낸 턴 수(빈 칸이 생기거나 잘린다).
+            "panel_count_wrong_turns": panel_count_wrong,
         },
         "지표④_일지정확도": {
             "keyword_accuracy_pct": round(100 * kw_sum / n, 2) if n else 0.0,
@@ -518,15 +607,31 @@ def main() -> None:
     ap.add_argument("--api-key", default=None)
     ap.add_argument("--few-shot", action="store_true",
                     help="프롬프트에 few-shot 예시를 넣는다. 튜닝 전 베이스라인 측정용.")
+    ap.add_argument("--layout", action="store_true",
+                    help="모델이 화면 배치(cop_layout)까지 직접 내는 구조로 평가한다. "
+                         "gen_dataset.py --layout-target으로 만든 데이터로 학습한 "
+                         "모델에 쓴다. 지표②가 플레이북 파생이 아니라 모델이 낸 "
+                         "배치를 채점하게 되며, 지어낸 source_id 개수도 함께 센다.")
+    ap.add_argument("--data", type=Path, default=None,
+                    help="turns_*.jsonl이 있는 디렉터리. 기본값 finetune/data. "
+                         "gen_dataset.py --layout-target --out finetune/data_layout로 "
+                         "만든 데이터를 평가할 때 finetune/data_layout처럼 지정한다 — "
+                         "train_lora.py --data와 같은 값을 줘야 한다(turns_*.jsonl 자체는 "
+                         "--layout-target 여부와 무관하게 두 디렉터리에서 동일하므로, "
+                         "꼭 그 데이터로 학습했을 때만 맞춰야 하는 건 아니지만 보통 같이 둔다).")
     ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
+
+    if args.data:
+        global DATA_DIR
+        DATA_DIR = args.data
 
     backends = {"gold": GoldBackend, "perturb": PerturbBackend,
                 "openai": OpenAIBackend, "hf": HFBackend}
     backend = backends[args.backend](
         noise=args.noise, base_url=args.base_url, model=args.model,
         adapter=args.adapter, api_key=args.api_key or os.environ.get("OPENAI_API_KEY"),
-        few_shot=args.few_shot,
+        few_shot=args.few_shot, layout=args.layout,
     )
 
     result = evaluate(load_turns(args.split), backend, args.limit)

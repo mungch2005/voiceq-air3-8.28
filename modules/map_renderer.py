@@ -1,10 +1,11 @@
 """가상비행단 배치도 SVG 렌더링 — 위성사진 느낌의 기지 조감도.
 
-이 지도는 상황에 따라 바뀌지 않는 "고정 배치도"다. 지도 위에는 두 가지만
-얹는다 — ① 카탈로그에 있는 모든 CCTV의 위치(회색 점), ② 지금 COP 화면
-(비디오월)에 떠 있는 CCTV의 위치(빨간 점). 항적·경보수준·자산 가동상태처럼
-LLM의 추정이 필요한 정보는 올리지 않는다 — 정확한 위치를 모르는 것을 지도에
-억지로 찍으면 "그 지점에 실재한다"는 그림이 되어 보는 사람을 오도하기 때문이다.
+이 지도는 상황에 따라 바뀌지 않는 "고정 배치도"다. 지도 위에는 지금 COP 화면
+(비디오월)에 떠 있는 CCTV의 위치(빨간 점)만 얹는다 — 카탈로그 전체 CCTV 위치를
+회색 점으로 항상 깔아 두던 이전 버전은 격자 칸마다 점이 찍혀 잡음처럼 보인다는
+피드백으로 뺐다. 항적·경보수준·자산 가동상태처럼 LLM의 추정이 필요한 정보도
+올리지 않는다 — 정확한 위치를 모르는 것을 지도에 억지로 찍으면 "그 지점에
+실재한다"는 그림이 되어 보는 사람을 오도하기 때문이다.
 """
 
 from __future__ import annotations
@@ -25,12 +26,12 @@ SUBDIV = 4  # 주격자 한 칸을 몇 등분해 보조격자를 그릴지
 # 특정 지점을 비추는 카메라가 아니므로 지도에 찍지 않는다.
 CAMERA_FEED_TYPES = {"CCTV", "열상", "바디캠", "이동형", "조준경"}
 
-EXISTING_CAMERA_COLOR = "#6E8A99"
 ACTIVE_CAMERA_COLOR = "#E63946"
 
 # 위성사진 느낌을 내기 위한 팔레트 (지표 · 포장 · 건물 지붕)
 TERRAIN = "#2B3A2E"
 TERRAIN_LIGHT = "#35472F"
+TERRAIN_SHADOW = "#1E2B1F"  # 수목 얼룩에 명암을 섞어 평면적인 반점처럼 안 보이게
 ASPHALT = "#2E3236"
 CONCRETE = "#4A4E52"
 ROAD = "#3A3E42"
@@ -68,16 +69,6 @@ def _rect_for(cells: list[str]) -> tuple[float, float, float, float] | None:
 def _jitter(seed: str, span: int) -> int:
     """같은 입력에는 항상 같은 값. 지형 얼룩을 흩뿌리되 새로고침해도 안 흔들리게."""
     return int(hashlib.md5(seed.encode()).hexdigest(), 16) % span
-
-
-def _existing_camera_cells() -> list[tuple[float, float]]:
-    """카탈로그에 있는 모든 카메라의 위치. 격자 1칸에 여러 대가 있어도 점 하나로 합친다."""
-    cells: set[str] = set()
-    for source in sources.load_catalog():
-        if source["feed_type"] in CAMERA_FEED_TYPES:
-            cells.add(source["cell"])
-    points = [pos for cell in cells if (pos := _center(cell))]
-    return points
 
 
 def _active_camera_markers(active_sources: list[dict] | None) -> list[tuple[float, float, str]]:
@@ -353,35 +344,70 @@ def build_map_svg(
 
     p: list[str] = [
         f'<svg viewBox="0 0 {W} {H}" width="100%" xmlns="http://www.w3.org/2000/svg" '
-        f'style="display:block; border-radius:6px; background:#11160F;">',
+        f'style="display:block; border-radius:6px; background:#0A0D08;">',
         "<defs>",
+        # 야간 위성사진 느낌의 비네트 — 가장자리로 갈수록 어두워지는 단일 톤
+        # 배경보다, 중앙 감시 구역이 은은하게 도드라지는 편이 지도를 "찍은 사진"처럼
+        # 보이게 한다. 평평한 단색 배경은 자리표시자처럼 보인다는 피드백이 있었다.
+        '<radialGradient id="vignette" cx="50%" cy="42%" r="72%">'
+        '<stop offset="0%" stop-color="#161D14"/>'
+        '<stop offset="100%" stop-color="#0A0D08"/>'
+        "</radialGradient>",
         # 지표 질감 — 옅은 얼룩 패턴
         '<pattern id="grass" width="26" height="26" patternUnits="userSpaceOnUse">'
         f'<rect width="26" height="26" fill="{TERRAIN}"/>'
         f'<circle cx="6" cy="7" r="7" fill="{TERRAIN_LIGHT}" opacity="0.5"/>'
         f'<circle cx="19" cy="18" r="5" fill="{TERRAIN_LIGHT}" opacity="0.35"/>'
         "</pattern>",
-        # 포장면 질감
-        '<pattern id="pave" width="14" height="14" patternUnits="userSpaceOnUse">'
-        f'<rect width="14" height="14" fill="{ASPHALT}"/>'
-        f'<rect width="7" height="7" fill="#33383C" opacity="0.5"/>'
+        # 포장면 질감 — 실제 활주로·계류장의 팽창 이음매를 흉내낸 사선 결.
+        # 이전에는 타일마다 밝은 정사각형이 하나씩 찍혀 체스판처럼 보였는데,
+        # 아스팔트에 그런 무늬가 있을 이유가 없어 "아무 의미 없이 생성된 패턴"
+        # 처럼 읽혔다. 사선 이음매는 실제 포장면 시공 자국에 해당한다.
+        '<pattern id="pave" width="22" height="22" patternUnits="userSpaceOnUse" '
+        'patternTransform="rotate(35)">'
+        f'<rect width="22" height="22" fill="{ASPHALT}"/>'
+        '<line x1="0" y1="0" x2="0" y2="22" stroke="#3A3F44" stroke-width="1" opacity="0.4"/>'
         "</pattern>",
         # 건물 그림자
         '<filter id="bshadow" x="-30%" y="-30%" width="180%" height="180%">'
         '<feDropShadow dx="1.5" dy="2.5" stdDeviation="1.2" flood-color="#000" '
         'flood-opacity="0.55"/></filter>',
+        # 필름 그레인 — 벡터 도형만 깔끔하게 겹쳐 놓으면 화면에서 만든 그래픽처럼
+        # 보인다. 아주 옅은 입자 노이즈를 전체에 얹으면 "촬영된 사진"에 가까운
+        # 질감이 생긴다. 애니메이션이 아니라 정적 노이즈라 매 렌더마다 값은
+        # 바뀌지만 화면상 티는 나지 않는다.
+        '<filter id="grain" x="0" y="0" width="100%" height="100%">'
+        '<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" '
+        'stitchTiles="stitch" result="noise"/>'
+        '<feColorMatrix in="noise" type="matrix" '
+        'values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0"/>'
+        "</filter>",
+        # 비스듬한 광원 — 좌상단은 살짝 밝게, 우하단은 살짝 어둡게 깔아서 위성이
+        # 낮은 태양각으로 촬영한 듯한 입체감을 준다. 평평한 조명(사방이 똑같이
+        # 밝은 상태)은 인쇄된 도면처럼 보이게 만드는 원인이었다.
+        '<linearGradient id="raking" x1="0%" y1="0%" x2="100%" y2="100%">'
+        '<stop offset="0%" stop-color="#EAF0C8" stop-opacity="0.08"/>'
+        '<stop offset="45%" stop-color="#EAF0C8" stop-opacity="0"/>'
+        '<stop offset="100%" stop-color="#000000" stop-opacity="0.22"/>'
+        "</linearGradient>",
         "</defs>",
-        f'<rect width="{W}" height="{H}" fill="#11160F"/>',
+        f'<rect width="{W}" height="{H}" fill="url(#vignette)"/>',
         f'<rect x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" fill="url(#grass)"/>',
     ]
 
     # --- 수목·초지 얼룩 (지형감) — CCTV 점이 잘 보이도록 옅게만 ---
+    # 그림자 얼룩을 살짝 어긋난 위치에 먼저 깔고 그 위에 밝은 수관을 겹쳐, 위에서
+    # 비스듬히 비친 빛을 받는 나무 덤불처럼 보이게 한다. 반점 하나짜리 단색 원만
+    # 나열하면 배경에 무작위로 뿌린 것처럼 평면적으로 보인다.
     for i in range(40):
         cx = x0 + _jitter(f"vx{i}", int(x1 - x0))
         cy = y0 + _jitter(f"vy{i}", int(y1 - y0))
         r = 5 + _jitter(f"vr{i}", 13)
         p.append(
-            f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="#1F2E20" opacity="0.3"/>'
+            f'<circle cx="{cx + 2}" cy="{cy + 3}" r="{r}" fill="{TERRAIN_SHADOW}" opacity="0.35"/>'
+        )
+        p.append(
+            f'<circle cx="{cx - 1}" cy="{cy - 1}" r="{r * 0.8}" fill="#1F2E20" opacity="0.3"/>'
         )
 
     # --- 내부 도로망 ---
@@ -531,16 +557,7 @@ def build_map_svg(
         f'opacity="0.75"/>'
     )
 
-    # --- 기존 CCTV 위치 (배경, 회색 점) ---
     active_markers = _active_camera_markers(active_sources)
-    active_cells = {(x, y) for x, y, _ in active_markers}
-    for x, y in _existing_camera_cells():
-        if (x, y) in active_cells:
-            continue  # 지금 활성화된 자리는 아래에서 빨간 점으로 다시 그린다.
-        p.append(
-            f'<circle cx="{x}" cy="{y}" r="3.2" fill="{EXISTING_CAMERA_COLOR}" '
-            f'stroke="#0D1210" stroke-width="0.8" opacity="0.85"/>'
-        )
 
     # --- 지금 COP 화면에 떠 있는 CCTV 위치 (빨간 점) ---
     for x, y, label in active_markers:
@@ -582,6 +599,17 @@ def build_map_svg(
             f'<text x="{mx + 11}" y="{my - 8}" fill="#E8EAEC" font-size="9" '
             f'text-anchor="middle" font-family="monospace">{idx}</text>'
         )
+
+    # --- 색보정 — 비스듬한 광원 + 필름 그레인. 마커까지 포함해 전체에 한 번에
+    # 얹어야 "따로 그려 붙인 도형들"이 아니라 "한 장의 사진"처럼 통일되어 보인다.
+    # 정보를 더하는 레이어가 아니라 이미 그린 것의 질감만 바꾸는 레이어이므로,
+    # 이 지도가 카메라 위치 두 가지 외에는 아무것도 얹지 않는다는 원칙(모듈
+    # docstring)과 충돌하지 않는다.
+    p.append(f'<rect width="{W}" height="{H}" fill="url(#raking)" style="mix-blend-mode:overlay"/>')
+    p.append(
+        f'<rect width="{W}" height="{H}" filter="url(#grain)" opacity="0.05" '
+        f'style="mix-blend-mode:overlay"/>'
+    )
 
     p.append("</svg>")
     return "".join(p)

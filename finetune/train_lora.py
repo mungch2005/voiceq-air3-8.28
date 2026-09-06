@@ -48,6 +48,8 @@ DEFAULT_MODEL = "Qwen/Qwen2.5-3B-Instruct"
 
 
 def load_sft(split: str) -> list[dict]:
+    # DATA_DIR은 --data로 바뀔 수 있다(main에서 재할당). 기본 데이터와 레이아웃 변형
+    # 데이터(gen_dataset.py --layout-target)를 같은 스크립트로 학습하기 위한 것이다.
     path = DATA_DIR / f"sft_{split}.jsonl"
     if not path.exists():
         raise SystemExit(f"{path} 가 없습니다. 먼저 python finetune/gen_dataset.py 를 실행하세요.")
@@ -396,6 +398,10 @@ def embed_chat_template(model_dir: Path) -> bool:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default=DEFAULT_MODEL)
+    ap.add_argument("--data", type=Path, default=None,
+                    help="SFT 데이터 디렉터리. 기본값 finetune/data. "
+                         "gen_dataset.py --layout-target으로 만든 데이터를 학습할 때 "
+                         "finetune/data_layout 처럼 지정한다.")
     ap.add_argument("--out", type=Path, default=Path(__file__).resolve().parent / "out")
     ap.add_argument("--epochs", type=float, default=3.0)
     ap.add_argument("--batch-size", type=int, default=2)
@@ -415,6 +421,10 @@ def main() -> None:
     ap.add_argument("--merge", type=Path, default=None,
                     help="학습된 어댑터를 베이스에 병합해 이 경로에 저장한다.")
     args = ap.parse_args()
+
+    if args.data:
+        global DATA_DIR
+        DATA_DIR = args.data
 
     if args.dry_run:
         dry_run(args)

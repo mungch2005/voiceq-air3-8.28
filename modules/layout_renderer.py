@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import html
 
 import streamlit as st
@@ -10,21 +9,14 @@ import streamlit as st
 from modules import map_renderer as mr
 from modules import organization as org
 from modules import playbook as pb
+from modules import screen_mockups as sm
+from modules import sources
 
 
 def _esc(text: object) -> str:
     return html.escape(str(text), quote=True)
 
-# 소스 이름 -> 플레이스홀더 색상 (실제 영상 피드 없이 색상 블록으로 시현)
-_PALETTE = ["#264653", "#2A6F77", "#3D5A80", "#5C4D7D", "#7A4B6B", "#8A3033"]
-
 POSITION_ORDER = ["좌측대형", "우측상단", "우측하단", "중앙"]
-
-
-def _color_for(name: str) -> str:
-    idx = int(hashlib.md5(name.encode("utf-8")).hexdigest(), 16) % len(_PALETTE)
-    return _PALETTE[idx]
-
 
 MAP_SOURCES = ("SYS-BASEMAP",)
 SITBOARD_SOURCE_ID = "SYS-SITBOARD"
@@ -137,14 +129,18 @@ def _panel_html(
         body = _situation_board_body(situation_board or [])
         bg = "#0B0F14"
     else:
-        color = _color_for(source_id)
-        body = (
-            f'<div style="flex:1; display:flex; flex-direction:column; align-items:center; '
-            f'justify-content:center; gap:5px; padding:8px; text-align:center;">'
-            f'<div style="font-size:0.7rem; opacity:0.6;">격자 {_esc(item.get("cell", ""))}</div>'
-            f'<div style="font-size:0.65rem; opacity:0.4;">실제 피드 연동 시 표출</div></div>'
-        )
-        bg = color
+        catalog_entry = sources.by_id().get(source_id)
+        if catalog_entry:
+            body = sm.render(catalog_entry)
+        else:
+            # 폐쇄 카탈로그에 없는 소스 id — 플레이북 편집 실수 등으로만 발생해야
+            # 하며, 조용히 빈 화면을 보여주는 대신 문제를 그대로 드러낸다.
+            body = (
+                '<div style="flex:1; display:flex; align-items:center; justify-content:center; '
+                'padding:8px; text-align:center; font-size:0.65rem; opacity:0.5;">'
+                f"카탈로그에 없는 소스: {_esc(source_id)}</div>"
+            )
+        bg = "#05080B"
 
     footer = (
         f'<div style="padding:3px 8px; background:rgba(0,0,0,0.35); font-size:0.62rem; '

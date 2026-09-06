@@ -102,13 +102,25 @@ def run_utterance(speaker: str, utterance: str) -> None:
     # 파인튜닝 모델은 few-shot 없이 학습했다. 그대로 예시를 보내면 학습 때 본 적 없는
     # 형태의 입력이 되고, 줄이려고 튜닝한 입력 토큰도 도로 늘어난다.
     skip_few_shot = st.session_state.get("skip_few_shot", False)
-    fast_shots = [] if skip_few_shot else prompts.FAST_FEW_SHOT_MESSAGES
+
+    # 화면 구성을 모델이 직접 내게 할지. 프롬프트가 달라지므로 학습한 구조와 맞춰야
+    # 한다 — 배치를 학습하지 않은 모델에 이 프롬프트를 보내면 없는 화면 이름을
+    # 지어내고, 그러면 context_memory가 검증에서 걸러 플레이북으로 되돌린다.
+    llm_layout = st.session_state.get("llm_layout", False)
+    fast_system = (
+        prompts.FAST_LAYOUT_SYSTEM_PROMPT if llm_layout else prompts.FAST_SYSTEM_PROMPT
+    )
+    fast_all_shots = (
+        prompts.FAST_LAYOUT_FEW_SHOT_MESSAGES if llm_layout
+        else prompts.FAST_FEW_SHOT_MESSAGES
+    )
+    fast_shots = [] if skip_few_shot else fast_all_shots
     full_shots = [] if skip_few_shot else prompts.FULL_FEW_SHOT_MESSAGES
 
     result = engine.analyze_turn(
         client_factory=client_factory,
         model=model,
-        fast_system=prompts.FAST_SYSTEM_PROMPT,
+        fast_system=fast_system,
         fast_few_shot=fast_shots,
         fast_turn=fast_turn,
         full_system=prompts.FULL_SYSTEM_PROMPT,
@@ -188,10 +200,14 @@ with st.sidebar:
                     st.error(str(e))
 
         if st.session_state.voice_transcript:
+            # key를 지정하지 않는다. key가 있는 위젯은 한 번 그려진 뒤로 value= 인자를
+            # 무시하고 자기 이전 입력만 계속 보여주므로, 두 번째로 녹음해 변환하면
+            # 새 전사 결과 대신 첫 번째 결과가 그대로 남아 있었다. 그 상태로 처리하면
+            # 방금 말한 내용이 아니라 이전 발언이 일지에 들어간다.
+            # (Context Memory 편집창에서 같은 문제를 이미 겪어 같은 방식으로 고쳤다.)
             edited_transcript = st.text_area(
                 "변환된 발언 (필요하면 수정 후 처리)",
                 value=st.session_state.voice_transcript,
-                key="voice_transcript_edit",
                 height=100,
             )
             if st.button(
@@ -290,6 +306,15 @@ with st.sidebar:
              "튜닝하지 않은 모델에 체크하면 형식이 무너지므로 끄십시오.",
     )
 
+    st.checkbox(
+        "화면 구성을 모델이 직접 (기획서 원안)",
+        key="llm_layout",
+        help="켜면 모델이 상황 유형과 함께 띄울 화면 목록까지 냅니다(기획서 원안 구조). "
+             "gen_dataset.py --layout-target으로 만든 데이터로 학습한 모델에만 켜십시오. "
+             "학습하지 않은 모델은 없는 화면 이름을 지어내며, 그 경우 검증에서 걸러 "
+             "플레이북 배치로 자동 복귀합니다. 끄면 운용자 플레이북이 배치를 정합니다.",
+    )
+
     st.caption(
         "폐쇄망 목표를 고려하면 시연에도 작은 모델을 쓰는 편이 좋습니다. "
         "거대 클라우드 모델로 시연해 놓고 온프레미스 12GB에서 된다고 하면 심사에서 반박당합니다."
@@ -320,6 +345,8 @@ with st.sidebar:
             "situation_board", "operation_log", "latency_history",
             "display_latency_history", "dropped_sources",
             "map_markers", "_last_map_click", "voice_transcript",
+            "active_situations", "situation_type", "situation_reason",
+            "situation_unmatched", "layout_origin", "invented_sources",
         ):
             st.session_state.pop(key, None)
         cm.init_session_state()
@@ -343,6 +370,22 @@ with tab_wall:
             st.warning(
                 f"모델이 낸 유형 '{st.session_state.situation_unmatched}' 은 플레이북에 없어 "
                 "'기타 상황'으로 처리했습니다. 필요하면 플레이북 탭에서 추가하세요."
+            )
+        # 화면을 누가 구성했는지 밝힌다. 모델 배치를 켜 놓고도 조용히 플레이북으로
+        # 되돌아가 있으면, 시연 중에 "모델이 배치한다"고 설명하는 것과 실제가 어긋난다.
+        if st.session_state.layout_origin:
+            if st.session_state.layout_origin == "모델":
+                cols[0].caption("화면 구성: 모델이 직접 결정")
+            elif st.session_state.get("llm_layout"):
+                st.warning(
+                    "모델이 낸 화면 목록에 쓸 수 있는 화면이 부족해 플레이북 배치로 "
+                    "되돌렸습니다. 배치를 학습하지 않은 모델이면 사이드바의 "
+                    "'화면 구성을 모델이 직접'을 꺼 주십시오."
+                )
+        if st.session_state.invented_sources:
+            st.caption(
+                "모델이 지어내 버린 화면: "
+                + ", ".join(st.session_state.invented_sources[:6])
             )
 
     lr.render_cop_wall(
@@ -441,7 +484,22 @@ with tab_log:
 
 with tab_memory:
     st.subheader("Context Memory (현재 누적 요약)")
+    st.caption("발언마다 AI가 자동으로 갱신하는 회의 맥락 메모입니다. 다음 발언을 판단할 때 이 내용을 그대로 참고합니다.")
     st.info(st.session_state.context_memory_summary or "아직 발언이 없습니다.")
+
+    with st.expander("Context Memory 직접 수정 (평소엔 AI가 자동 갱신 — 필요할 때만 사용)"):
+        # key를 지정하지 않는다 — key가 있는 위젯은 한 번 그려진 뒤로 value= 인자를
+        # 무시하고 위젯 자신의 이전 입력만 계속 보여줘서, 발언이 들어와 AI가 요약을
+        # 갱신해도 이 편집창엔 반영되지 않는 문제가 있었다(메인 기능인 자동 갱신
+        # 표시가 깨져 보이는 원인이었다). key 없이 매번 value=로 최신값을 그려야
+        # 편집창을 열 때마다 지금 요약을 정확히 반영한다.
+        edited_memory = st.text_area(
+            "Context Memory 편집", value=st.session_state.context_memory_summary, height=160,
+        )
+        if st.button("Context Memory 저장", key="save_memory"):
+            st.session_state.context_memory_summary = edited_memory.strip()
+            st.success("저장했습니다. 다음 발언부터 이 내용을 기준으로 판단합니다.")
+            st.rerun()
 
     st.subheader("발언 이력")
     if st.session_state.utterance_log:

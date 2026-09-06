@@ -226,6 +226,10 @@ VRAM이 모자라면 `--model Qwen/Qwen2.5-1.5B-Instruct --batch-size 1 --grad-a
 
 ### 8.1 산출물 내려받기
 
+**허깅페이스에 바로 올릴 거라면 이 절은 건너뛰어도 된다** — `kaggle_train.ipynb` 10번
+셀이 학습이 끝나는 즉시 병합본을 허깅페이스 저장소로 올린다(8.1-b 참고). 로컬에
+내려받아 직접 서빙(Ollama/vLLM)하려는 경우에만 아래가 필요하다.
+
 Kaggle 노트북 버전의 **Output** 탭에서 `finetune/out/` 아래를 받는다.
 
 | 받을 것 | 용도 |
@@ -240,6 +244,30 @@ Kaggle 노트북 버전의 **Output** 탭에서 `finetune/out/` 아래를 받는
 python finetune/train_lora.py --model Qwen/Qwen2.5-3B-Instruct \
     --out <adapter의 상위 폴더> --merge ./merged
 ```
+
+### 8.1-b 산출물을 허깅페이스로 자동 업로드
+
+`kaggle_train.ipynb` 10번 셀. 켜 두면 9번 셀(병합)이 끝나는 즉시 결과를 허깅페이스
+저장소로 올린다 — 수동으로 Output에서 내려받아 다시 업로드하던 단계를 없앤 것이다.
+
+준비물은 한 번만 하면 된다:
+1. https://huggingface.co/settings/tokens 에서 fine-grained 토큰 발급, 대상 저장소에
+   **Write** 권한
+2. Kaggle 노트북의 **Add-ons → Secrets**에 `HF_TOKEN`이라는 이름으로 등록하고, 이
+   노트북에 **Attach**
+
+저장소 이름은 설정 셀의 `HF_REPO_ID`에서 정한다. `LAYOUT` 값에 따라 `-layout` 접미사가
+자동으로 붙어서, 원안 구조(배치까지 출력)로 학습한 모델이 기존 분류 전용 모델을 조용히
+덮어쓰지 않는다 — 둘은 출력 스키마가 다르다.
+
+병합 단계와 마찬가지로 실패해도(토큰 미설정 등) 노트북 전체를 실패로 만들지 않는다.
+`train_lora.py`가 병합 시점에 채팅 템플릿을 이미 심어 두므로(8.6절의
+"Template error: template not found" 문제), 이 경로로 올린 모델은 TGI/vLLM/Ollama에
+바로 붙는다 — `fix_chat_template.py`를 따로 돌릴 필요가 없다.
+
+기존에 걸리던 저장소(예: 조준 전 커밋)에 새로 올리면, 그 저장소를 가리키는 HF Inference
+Endpoint의 **Advanced settings → commit revision**을 새 커밋 해시로 바꿔야 반영된다 —
+Pause/Resume만으로는 예전에 받아 둔 캐시를 그대로 쓴다(8.6절 참고).
 
 ### 8.2 서빙 — Ollama (권장)
 
@@ -391,6 +419,84 @@ GPU를 시간당 빌려 vLLM을 직접 띄운다. 8.2-b의 명령을 그대로 �
 정상인지 먼저 가르려면 채팅 템플릿을 안 쓰는 경로로 찔러 보면 된다 —
 `/v1/completions`에 ChatML(`<|im_start|>system ... <|im_end|>`)을 손으로 조립해
 보내서 JSON이 나오면 모델은 정상이고 서버 템플릿만 문제다.
+
+## 8.7 실험 — 모델이 화면 배치까지 직접 내게 하기 (기획서 원안 구조)
+
+기본 경로는 모델이 상황 유형만 내고 화면 배치는 플레이북(코드)이 결정한다(2절).
+**원 기획서는 모델이 화면 구성을 직접 내는 구조**였으므로, 그것이 파인튜닝으로 실제
+성립하는지 측정할 수 있게 변형을 따로 두었다. 앱 실행 경로(`context_memory.apply_fast_result`)는
+건드리지 않았다 — 수치를 보고 나서 전환 여부를 결정하기 위해서다.
+
+### 무엇이 달라지나
+
+| | 기본 (현행) | `--layout-target` (원안) |
+|---|---|---|
+| 모델이 내는 것 | `situation` | `situation` + `cop_layout` |
+| `cop_layout` 내용 | (없음) | 우선순위 순 `source_id` 6개 |
+| 격자 좌표(grid) | 코드(`playbook.tiling_for`) | **코드 그대로** — 모델이 내지 않는다 |
+| 화면 선택 판단 | 플레이북 | 모델 |
+| 지표② 의미 | 정의상 100% (결정론) | 실측값 |
+
+격자 좌표를 모델에 맡기지 않은 이유는, 격자 채우기가 판단이 아니라 패널 개수와 순번만으로
+정해지는 기하학이고, 모델이 좌표를 내면 겹침·빈칸을 어떤 학습으로도 구조적으로 막을 수
+없기 때문이다. 실제 판단(어떤 화면을 몇 순위로)은 전부 모델이 한다.
+
+### 실행
+
+```bash
+# 데이터 생성 (기본 데이터와 별도 디렉터리)
+python finetune/gen_dataset.py --layout-target --out finetune/data_layout
+
+# 학습 — 데이터 경로만 바꾸면 된다
+python finetune/train_lora.py --data finetune/data_layout ...
+
+# 평가 — --layout을 켜야 모델이 낸 배치를 채점한다(안 켜면 플레이북 파생을 채점)
+python finetune/evaluate.py --backend gold --layout          # 자기검증: 100%여야 한다
+python finetune/evaluate.py --backend perturb --noise 0.3 --layout   # 하락해야 한다
+python finetune/evaluate.py --backend openai --layout     --base-url <서빙주소>/v1 --model voicecue-qwen2.5-3b
+```
+
+`turns_*.jsonl`은 두 디렉터리에서 완전히 동일하다(`--layout-target`은 SFT 타깃만 바꾼다).
+그래서 굳이 나눌 필요는 없지만, `train_lora.py --data`와 짝을 맞추는 습관으로
+`evaluate.py --data finetune/data_layout`도 지원한다(안 주면 `finetune/data` 기본값).
+
+### 측정해 둔 사전 수치
+
+**학습 데이터가 덮는 화면은 카탈로그 270개 중 93개(34.4%)이고, 모든 정답 레이아웃이
+정확히 6패널이다.** 플레이북이 결정론이라 당연한 결과지만 함의가 있다 — 정답이
+플레이북 출력이므로 **모델의 천장은 "플레이북을 정확히 흉내내는 것"이다.** 이 실험이
+답하는 질문은 "모델이 더 나은 배치를 하는가"가 아니라 **"3B 모델이 운용자 플레이북
+정책을 통째로 내재화할 수 있는가"**이며, 된다면 서빙 시 플레이북 파일 의존이 사라지고
+기획서 원안 구조가 된다.
+
+토큰 실측(Qwen2.5-3B 토크나이저, train 분할 FAST 평균):
+
+| | 입력 | 출력 |
+|---|---|---|
+| 기본 | 1,144 | 40 |
+| `--layout-target` | 1,359 | 101 |
+| 증가 | +215 (+19%) | **+61 (+153%)** |
+
+**출력 토큰이 2.5배로 늘어나는 것이 이 방식의 실질적 대가다.** 생성은 순차적이라
+출력 길이가 지연시간을 지배하므로, 표출 지연 목표(5초 이내)에 직접 영향을 준다.
+현재 HF 엔드포인트 실측 FAST 지연이 4.8초였으므로 여유가 크지 않다.
+
+### 앱 연결 상태
+
+**연결 완료.** `context_memory.apply_fast_result()`가 모델의 `cop_layout`을 받으면
+`playbook.layout_from_source_ids()`(카탈로그 대조·중복 제거·격자 배정)로 검증하고,
+쓸 수 있는 화면이 3개 미만이면 `build_layout_multi()`로 자동 폴백한다 — 반쯤 빈 벽면보다
+결정론적 배치가 낫기 때문이다. `layout_from_source_ids`는 학습·평가·런타임이 같은
+검증 규칙을 쓰도록 `evaluate.py`가 아니라 `playbook.py`에 있다. 사이드바 "화면 구성을
+모델이 직접 (기획서 원안)" 체크박스로 켜고 끌 수 있고, 화면 상단에 이번 배치를 누가
+만들었는지("모델"/"플레이북")와 조용한 폴백 여부를 표시한다.
+
+`evaluate.py`의 `invalid_source_id_count`·`panel_count_wrong_turns`가 이 검증 계층이
+실제로 얼마나 자주 개입하는지 알려 준다 — 재학습 후 이 수치가 높으면 카탈로그를
+프롬프트에 더 명시적으로 주입하거나 few-shot을 늘리는 걸 고려할 것.
+
+남은 건 심사 서술뿐이다 — "배치가 결정론이라 일치율 100%"를 더 이상 쓸 수 없고, 대신
+"기획서 원안대로 구현했고 일치율은 실측 N%"가 된다.
 
 ## 9. 알려진 한계
 

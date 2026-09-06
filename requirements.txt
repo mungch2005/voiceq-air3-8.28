@@ -1,4 +1,4 @@
-streamlit>=1.38
+streamlit>=1.40  # st.audio_input(음성 입력)이 1.40에서 추가됨
 openai>=1.40
 streamlit-image-coordinates>=0.2
 Pillow>=10

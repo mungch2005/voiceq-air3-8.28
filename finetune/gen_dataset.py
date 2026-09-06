@@ -46,6 +46,11 @@ OUT_DIR = Path(__file__).resolve().parent / "data"
 
 URGENCY_ORDER = {"긴급": 0, "주의": 1, "관찰": 2}
 IGNORE_REASON = "상황 판단·조치와 무관한 발언이므로 진행 중인 상황 유형을 유지"
+CONSTRAINT_REASON = "화면 배치에 대한 지시일 뿐 새로운 사태가 아니므로 상황 유형을 유지"
+
+# 발언 자체가 상황을 새로 알리거나 바꾸지 않을 때 FAST가 내는 값. 정의는 playbook에
+# 있고 앱·평가도 같은 상수를 쓴다 — 문자열을 복제하면 조용히 어긋난다.
+KEEP_SITUATION = pb.KEEP_SITUATION
 
 
 # ---------------------------------------------------------------------
@@ -93,6 +98,12 @@ class ScenarioState:
         self.op_log: list[dict] = []      # {event_id, title, entries[]}
         self.corrections: list[str] = []
         self.situation_type: str = ""
+        # 지금 동시에 진행 중인 상황 유형(최근 갱신 순). 런타임
+        # context_memory.apply_fast_result와 같은 규칙으로 유지한다 — 두 사태가 같이
+        # 진행 중이면 화면도 둘을 함께 띄우므로, 학습 정답도 그렇게 만들어야 한다.
+        # 안 그러면 모델이 두 번째 사태 화면만 내도록 배워서, 첫 사태가 화면에서
+        # 사라지는 문제를 그대로 재현한다.
+        self.active_situations: list[str] = []
         self.clock = 14 * 3600            # 14:00:00에서 시작
         self.tick = 0
 
@@ -118,6 +129,13 @@ class ScenarioState:
             {"rank": i + 1, "event": e["event"], "urgency": e["urgency"]}
             for i, e in enumerate(ordered)
         ]
+
+    def touch_situation(self, name: str) -> list[str]:
+        """상황 유형을 활성 목록 맨 앞으로 올린다(없으면 추가). 최대 2개."""
+        actives = [s for s in self.active_situations if s != name]
+        actives.insert(0, name)
+        self.active_situations = actives[:2]
+        return self.active_situations
 
     # --- 갱신 ---
     def open_event(self, event: str, urgency: str, mem: str, log: str,
@@ -156,11 +174,18 @@ class ScenarioState:
 # ---------------------------------------------------------------------
 
 def emit_turn(state: ScenarioState, rng: random.Random, speaker: str, utterance: str,
-              situation_type: str, reason: str, log_entry: dict) -> dict:
+              situation_type: str, reason: str, log_entry: dict,
+              label_type: str | None = None) -> dict:
     """프롬프트 입력 상태를 먼저 스냅샷하고, 그 다음 상태를 갱신한 결과를 정답으로 삼는다.
 
     순서가 중요하다. 기획서 4-③ "Context Memory를 가장 먼저 갱신하고 그것을 바탕으로
     나머지를 산출"과 같은 순서여야 학습 데이터가 런타임 동작과 일치한다.
+
+    label_type은 FAST 정답으로 쓸 값이고, situation_type은 화면(cop_reference)을 만들
+    때 쓸 값이다. 둘은 보통 같지만 잡담·화면배치 지시처럼 문장 자체에 상황 단서가 없는
+    턴에서는 달라진다 — 그런 턴의 정답은 "유지"이고, 화면은 진행 중이던 상황 그대로다.
+    이 둘을 같은 값으로 두면 "커피 좀 준비해 주시겠습니까?"에 '적 미사일 낙탄 상황'
+    같은 라벨이 붙어, 모델이 아무 단서 없는 문장에서 상황을 찍도록 배우게 된다.
     """
     state_in = {
         "context_memory": state.context_memory(),
@@ -175,14 +200,18 @@ def emit_turn(state: ScenarioState, rng: random.Random, speaker: str, utterance:
         state_in["context_memory"], state_in["user_corrections"],
         org.describe_speaker(speaker), utterance, state_in["operation_log"],
     )
-    layout, unresolved = pb.build_layout(situation_type, utterance)
+    # 화면은 진행 중인 상황 전부를 함께 띄운다(런타임과 같은 규칙).
+    actives = state.active_situations or [situation_type]
+    layout, unresolved = pb.build_layout_multi(actives, utterance)
     return {
         "speaker": speaker,
         "utterance": utterance,
         "state_in": state_in,
         "fast_user": fast_user,
         "full_user": full_user,
-        "fast_target": {"situation": {"type": situation_type, "reason": reason}},
+        "fast_target": {
+            "situation": {"type": label_type or situation_type, "reason": reason}
+        },
         "full_target": {
             "context_memory": "",       # 갱신 후 채운다
             "situation_board": [],
@@ -190,6 +219,7 @@ def emit_turn(state: ScenarioState, rng: random.Random, speaker: str, utterance:
         },
         "cop_reference": {
             "situation": situation_type,
+            "active_situations": list(actives),
             "source_ids": [item["source_id"] for item in layout],
             # 화면 이름만으로는 검수가 안 된다. 어느 자리에 얼마만 한 크기로 뜨는지가
             # 기획서 3-라② "핵심정보 상위배치"의 실체이므로 자리·크기까지 함께 남긴다.
@@ -231,6 +261,9 @@ def build_scenario(rng: random.Random, primary_situation: str) -> list[dict]:
         board_text = fill(tpl["board"], ctx)
         ts = state.timestamp()
 
+        # 이 사태를 활성 목록 맨 앞에 올린 뒤 화면을 만든다. 앞선 사태가 아직
+        # 진행 중이면 그 화면도 함께 남는다(런타임과 같은 규칙).
+        state.touch_situation(situation_name)
         turn = emit_turn(state, rng, speaker, utterance, situation_name, board_text,
                          {"kind": "상황", "event_id": f"사태{len(state.op_log) + 1}", "content": log})
         event_id = state.open_event(board_text, tpl.get("urg", "주의"),
@@ -250,6 +283,7 @@ def build_scenario(rng: random.Random, primary_situation: str) -> list[dict]:
                 chat_turn = emit_turn(
                     state, rng, chat_speaker, chat["u"], state.situation_type, IGNORE_REASON,
                     {"kind": "무시", "event_id": "", "content": ""},
+                    label_type=KEEP_SITUATION,
                 )
                 chat_turn["full_target"]["context_memory"] = state.context_memory()
                 chat_turn["full_target"]["situation_board"] = state.board_snapshot()
@@ -264,8 +298,9 @@ def build_scenario(rng: random.Random, primary_situation: str) -> list[dict]:
                 con_board = fill(con["board"], ctx)
                 con_ts = state.timestamp()
                 con_turn = emit_turn(
-                    state, rng, con_speaker, con_u, state.situation_type, con_board,
+                    state, rng, con_speaker, con_u, state.situation_type, CONSTRAINT_REASON,
                     {"kind": "조치", "event_id": event_id, "content": con_log},
+                    label_type=KEEP_SITUATION,
                 )
                 state.update_event(event_id, con_board, None, fill(con["mem"], ctx),
                                    con_log, con_speaker, con_ts)
@@ -291,6 +326,8 @@ def build_scenario(rng: random.Random, primary_situation: str) -> list[dict]:
         if event_index == 0 and len(events) > 1:
             # 두 번째 사태로 넘어갈 때 유형이 바뀐다. "새로운 종류의 사건일 때만 유형을
             # 바꾼다"는 FAST 프롬프트 규칙을 지키는 양성 예시가 여기서 만들어진다.
+            # active_situations는 비우지 않는다 — 첫 사태는 아직 종료되지 않았고,
+            # 그래서 두 번째 사태가 시작돼도 화면에 함께 남아 있어야 한다.
             state.situation_type = ""
 
     return turns
@@ -300,10 +337,24 @@ def build_scenario(rng: random.Random, primary_situation: str) -> list[dict]:
 # SFT 변환 · 검증 · 출력
 # ---------------------------------------------------------------------
 
-def to_sft(turn: dict, route: str, few_shot: bool) -> dict:
+def to_sft(turn: dict, route: str, few_shot: bool, layout_target: bool = False) -> dict:
     if route == "fast":
-        system, user, target = prompts.FAST_SYSTEM_PROMPT, turn["fast_user"], turn["fast_target"]
-        shots = prompts.FAST_FEW_SHOT_MESSAGES
+        user = turn["fast_user"]
+        if layout_target:
+            # 기획서 원안 구조 — 모델이 화면 구성까지 직접 낸다. 정답 배치는 이미
+            # cop_reference에 플레이북으로 파생시켜 두었으므로 그 순서를 그대로 쓴다.
+            # grid는 넣지 않는다(playbook.tiling_for가 계속 계산한다) — 자세한 이유는
+            # prompts.FAST_LAYOUT_SYSTEM_PROMPT 위 주석 참고.
+            system = prompts.FAST_LAYOUT_SYSTEM_PROMPT
+            shots = prompts.FAST_LAYOUT_FEW_SHOT_MESSAGES
+            target = {
+                **turn["fast_target"],
+                "cop_layout": list(turn["cop_reference"]["source_ids"]),
+            }
+        else:
+            system = prompts.FAST_SYSTEM_PROMPT
+            shots = prompts.FAST_FEW_SHOT_MESSAGES
+            target = turn["fast_target"]
     else:
         system, user, target = prompts.FULL_SYSTEM_PROMPT, turn["full_user"], turn["full_target"]
         shots = prompts.FULL_FEW_SHOT_MESSAGES
@@ -318,7 +369,8 @@ def to_sft(turn: dict, route: str, few_shot: bool) -> dict:
 
 def validate(turns: list[dict]) -> None:
     """생성 즉시 라벨을 검증한다. 깨진 라벨로 학습을 돌리면 원인을 찾기가 훨씬 어렵다."""
-    valid_situations = set(pb.situation_names())
+    # "유지"는 플레이북의 상황 유형이 아니라 "이번 발언은 상황을 바꾸지 않는다"는 신호다.
+    valid_situations = set(pb.situation_names()) | {KEEP_SITUATION}
     for i, turn in enumerate(turns):
         sit = turn["fast_target"]["situation"]["type"]
         assert sit in valid_situations, f"turn {i}: 플레이북에 없는 상황 유형 {sit!r}"
@@ -357,6 +409,11 @@ def main() -> None:
                     help="SFT 샘플에 few-shot 예시를 포함한다. 기본값은 제외 — "
                          "파인튜닝의 목적이 few-shot 없이도 형식을 지키게 만들어 "
                          "입력 토큰과 지연시간을 줄이는 것이기 때문이다.")
+    ap.add_argument("--layout-target", action="store_true",
+                    help="FAST 학습 타깃에 cop_layout(우선순위 순 source_id 목록)을 "
+                         "포함한다. 기획서 원안대로 모델이 화면 구성까지 내는 구조를 "
+                         "파인튜닝으로 재현할 수 있는지 측정하기 위한 변형이며, "
+                         "앱 실행 경로는 이 옵션과 무관하게 플레이북을 계속 쓴다.")
     ap.add_argument("--out", type=Path, default=OUT_DIR)
     args = ap.parse_args()
 
@@ -400,7 +457,10 @@ def main() -> None:
         validate(turns)
         write_jsonl(args.out / f"turns_{split}.jsonl", turns)
 
-        sft = [to_sft(t, route, args.few_shot) for t in turns for route in ("fast", "full")]
+        sft = [
+            to_sft(t, route, args.few_shot, args.layout_target)
+            for t in turns for route in ("fast", "full")
+        ]
         write_jsonl(args.out / f"sft_{split}.jsonl", sft)
 
         kinds = Counter(t["full_target"]["operation_log_entry"]["kind"] for t in turns)

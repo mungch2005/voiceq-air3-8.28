@@ -1,4 +1,4 @@
-streamlit>=1.38
+streamlit>=1.60
 openai>=1.40
 streamlit-image-coordinates>=0.2
 Pillow>=10
